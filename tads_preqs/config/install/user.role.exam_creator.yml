@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies: 
+  enforced:
+    module:
+      - tads_preqs
+id: exam_creator
+label: 'Exam Creator'
+weight: -6
+is_admin: null
+permissions:
+  0: 'print tads exam'
+  1: 'score tads exam'
+  2: 'use text format basic_no_editor'
+  3: 'create exam content'
+  4: 'edit any exam content'
+  5: 'edit own exam content'
+  6: 'revert exam revisions'
+  7: 'view exam revisions'
+  8: 'create question content'
+  9: 'edit any question content'
+  10: 'edit own question content'
+  11: 'revert question revisions'
+  12: 'view question revisions'
+  18: 'create paragraph content scenario'
+  19: 'update paragraph content scenario'
+  20: 'view paragraph content scenario'
+  21: 'access in-place editing'
+  22: 'access contextual links'
+  23: 'access files overview'
+  24: 'access content overview'
+  25: 'view own unpublished content'
+  26: 'generate tads question'
+  27: 'access toolbar'
+  28: 'delete terms in tags'
+  29: 'edit terms in tags'
+  30: 'create publish_question workflow_transition'
+  31: 'create publish_exam workflow_transition'

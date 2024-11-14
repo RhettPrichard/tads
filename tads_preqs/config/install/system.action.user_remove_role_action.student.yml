@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: 
+  enforced:
+    module:
+      - tads_preqs
+  config:
+    - user.role.student
+  module:
+    - user
+id: user_remove_role_action.student
+label: 'Remove the Student role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: student

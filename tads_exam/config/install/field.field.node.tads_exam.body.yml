@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_exam
+  config:
+    - field.storage.node.body
+    - node.type.tads_exam
+  module:
+    - text
+id: node.tads_exam.body
+field_name: body
+entity_type: node
+bundle: tads_exam
+label: Description
+description: 'The description of the exam and what it is designed to test. Also if possible, list the certification this exam gives if the exam is completed to satisfaction.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

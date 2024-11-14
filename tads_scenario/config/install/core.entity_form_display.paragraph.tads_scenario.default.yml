@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_scenario
+  config:
+    - field.field.paragraph.tads_scenario.field_scenario_context
+    - field.field.paragraph.tads_scenario.field_scenario_figure
+    - field.field.paragraph.tads_scenario.field_scenario_instructions
+    - field.field.paragraph.tads_scenario.field_tads_question
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.tads_scenario
+  module:
+    - entity_reference_revisions
+    - image
+    - text
+id: paragraph.tads_scenario.default
+targetEntityType: paragraph
+bundle: tads_scenario
+mode: default
+content:
+  field_scenario_context:
+    weight: 1
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+  field_scenario_figure:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_scenario_instructions:
+    weight: 2
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea_with_summary
+  field_tads_question:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
+hidden:
+  created: true
+  status: true
+  uid: true

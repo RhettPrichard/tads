@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: 
+  enforced:
+    module:
+      - tads_preqs
+id: student
+label: Student
+weight: -8
+is_admin: null
+permissions:
+  - 'print tads exam'
+  - 'use text format basic_no_editor'
+  - 'view paragraph content scenario'
+  - 'access contextual links'
+  - 'view own unpublished content'
+  - 'create publish_question workflow_transition'
+  - 'create publish_exam workflow_transition'

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+id: answer_given
+label: 'Answer Given'
+target_entity_type_id: node
+description: 'An answer given by a student.'

@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  module:
+    - node
+id: node.tads_answer_guide_view_mode
+label: 'Answer Guide'
+targetEntityType: node
+cache: true

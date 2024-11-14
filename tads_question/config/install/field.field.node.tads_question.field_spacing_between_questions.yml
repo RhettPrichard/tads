@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  config:
+    - field.storage.node.field_spacing_between_questions
+    - node.type.tads_question
+id: node.tads_question.field_spacing_between_questions
+field_name: field_spacing_between_questions
+entity_type: node
+bundle: tads_question
+label: 'Spacing Between Questions'
+description: 'The amount of lines of white space required for this question to be answered by hand writing on a page.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 10
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' lines'
+field_type: integer

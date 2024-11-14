@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_scenario
+  config:
+    - field.storage.paragraph.field_scenario_figure
+    - paragraphs.paragraphs_type.tads_scenario
+  module:
+    - image
+id: paragraph.tads_scenario.field_scenario_figure
+field_name: field_scenario_figure
+entity_type: paragraph
+bundle: tads_scenario
+label: 'Scenario Figure'
+description: 'A figure that gives some context or requirements to complete the questions in this scenario.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_scenario
+id: tads_scenario
+label: Scenario

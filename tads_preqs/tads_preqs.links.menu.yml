@@ -1,0 +1,6 @@
+tads_question.list_exam_types:
+  title: 'List Exam Type Tags'
+  description: 'List all tags for questions and exams.'
+  url: 'internal:/admin/structure/taxonomy/manage/exam_types/overview'
+  weight: 40
+  menu_name: tools

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  config:
+    - comment.type.graders_comments
+    - field.storage.comment.field_suggested_point_value
+id: comment.graders_comments.field_suggested_point_value
+field_name: field_suggested_point_value
+entity_type: comment
+bundle: graders_comments
+label: 'Suggested Point Value'
+description: 'Point value suggested by this grader if different from the original.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' pts.'
+field_type: integer

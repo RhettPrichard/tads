@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  module:
+  - text
+  config:
+    - field.storage.node.field_reference
+    - node.type.tads_question
+id: node.tads_question.field_reference
+field_name: field_reference
+entity_type: node
+bundle: tads_question
+label: Reference
+description: 'A location in a book to find the answer.\r\nIf you have an ability to use an online reference then you can use an A tag html link to connect it.'
+required: false
+translatable: false
+default_value:
+  -
+    value: '<a href="http://www.google.com">Book 2, Chapter 1, Paragraph 20</a>'
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text

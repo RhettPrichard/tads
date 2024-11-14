@@ -1,0 +1,16 @@
+name: Exam
+description: Creates Exams for TADs
+package: TADs
+
+type: module
+core: 8.x
+core_version_requirement: ^10 || ^11
+
+dependencies:
+  - tads_scenario
+
+test_dependencies:
+ - drupal:dblog
+
+
+hidden: false

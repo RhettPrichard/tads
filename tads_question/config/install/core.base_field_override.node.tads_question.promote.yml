@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  config:
+    - node.type.tads_question
+id: node.tads_question.promote
+field_name: promote
+entity_type: node
+bundle: tads_question
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

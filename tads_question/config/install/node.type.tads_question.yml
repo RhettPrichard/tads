@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Question
+type: tads_question
+description: "Question, Points, Answers and partials Answers.\r\nTo be added to an exam."
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: true

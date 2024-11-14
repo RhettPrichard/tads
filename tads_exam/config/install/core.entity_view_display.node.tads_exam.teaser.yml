@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_exam
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tads_exam.body
+    - node.type.tads_exam
+  module:
+    - text
+    - user
+id: node.tads_exam.teaser
+targetEntityType: node
+bundle: tads_exam
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

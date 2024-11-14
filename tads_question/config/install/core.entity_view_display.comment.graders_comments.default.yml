@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  module:
+    - text
+  config:
+    - comment.type.graders_comments
+    - field.field.comment.graders_comments.comment_body
+    - field.field.comment.graders_comments.field_suggested_point_value
+id: comment.graders_comments.default
+targetEntityType: comment
+bundle: graders_comments
+mode: default
+content:
+  comment_body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_suggested_point_value:
+    weight: 101
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  links:
+    weight: 100
+hidden: {  }

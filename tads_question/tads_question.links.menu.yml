@@ -1,0 +1,6 @@
+tads_question.admin:
+  title: 'Question module settings'
+  description: 'changes to Question Settings page link'
+  parent: system.admin_config_development
+  route_name: tads_question.content
+  weight: 100

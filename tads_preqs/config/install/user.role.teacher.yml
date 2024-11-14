@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies: 
+  enforced:
+    module:
+      - tads_preqs
+id: teacher
+label: Teacher
+weight: -7
+is_admin: null
+permissions:
+  0: 'print tads exam'
+  1: 'score tads exam'
+  2: 'use text format basic_no_editor'
+  3: 'edit own exam content'
+  4: 'view exam revisions'
+  5: 'edit own question content'
+  6: 'view question revisions'
+  9: 'view paragraph content scenario'
+  10: 'access contextual links'
+  11: 'view own unpublished content'
+  12: 'create publish_question workflow_transition'
+  13: 'create publish_exam workflow_transition'

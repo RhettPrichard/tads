@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_exam
+  config:
+    - field.storage.node.field_scenario
+    - node.type.tads_exam
+    - paragraphs.paragraphs_type.tads_scenario
+  module:
+    - entity_reference_revisions
+id: node.tads_exam.field_scenario
+field_name: field_scenario
+entity_type: node
+bundle: tads_exam
+label: Scenario
+description: 'A grouping of questions revolving around a context, set of instruction or figures.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      tads_scenario: tads_scenario
+    target_bundles_drag_drop:
+      tads_scenario:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

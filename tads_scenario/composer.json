@@ -1,0 +1,26 @@
+{
+  "name": "drupal/tads_scenario",
+  "description": "Composer.json packaging and description for Drupal TADs Scenario's (Aggregate of Questions).",
+  "type": "drupal-module",
+  "license": "GPL-2.0+"
+  "comments": "remove underlines once supporting unsupported options",
+  "homepage": "https://https://tads.visualization-node.info/",
+  "authors": [
+    {
+      "name": "Rhett Prichard (rap)",
+      "homepage": "https://www.rhettprichard.com",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "_issues": "https://drupal.org/project/issues/mobile_detect",
+    "_irc": "irc://irc.freenode.org/drupal-contribute",
+    "source": "https://github.com/RhettPrichard/tads.git"
+  },
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "_require": {
+    "remove underscore",
+    "mobiledetect/mobiledetectlib": "~2.8"
+  }
+}

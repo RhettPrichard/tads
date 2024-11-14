@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+id: graders_comments
+label: 'Graders Comments'
+target_entity_type_id: comment
+description: 'Any comments left by the person who did the grading.'

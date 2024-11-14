@@ -1,0 +1,4 @@
+print tads exam:
+  title: 'Print TADs Exams'
+score tads exam:
+  title: 'Score TADs Exams'

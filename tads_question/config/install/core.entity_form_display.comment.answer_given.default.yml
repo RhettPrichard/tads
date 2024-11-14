@@ -1,0 +1,47 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  module:
+    - comment
+    - text
+  config:
+    - comment.type.answer_given
+    - field.field.comment.answer_given.comment_body
+    - field.field.comment.answer_given.field_finial_points_assigned
+    - field.field.comment.answer_given.field_graders_comment
+id: comment.answer_given.default
+targetEntityType: comment
+bundle: answer_given
+mode: default
+content:
+  author:
+    weight: -2
+  comment_body:
+    type: text_textarea
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_finial_points_assigned:
+    weight: 12
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+  field_graders_comment:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
+  subject:
+    type: string_textfield
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

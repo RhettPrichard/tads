@@ -1,0 +1,17 @@
+name: Scenario
+description: Creates Scenarios for questions to be attached to for TADs
+package: TADs
+
+type: module
+core: 8.x
+core_version_requirement: ^10 || ^11
+
+dependencies:
+  - paragraphs
+
+test_dependencies:
+ - drupal:dblog
+
+configure: tads_scenario.settings
+
+hidden: false

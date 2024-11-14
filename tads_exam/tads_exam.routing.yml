@@ -1,0 +1,28 @@
+tads_exam.studentprintout:
+  path: '/exam/{node}/studentprintout'
+  defaults:
+    _entity_view: node.exam
+    _title: '{title} student printout'
+  requirements:
+    _permission: 'print tads exam'
+tads_exam.studentprintout.example:
+  path: '/exam/7/studentprintout'
+  defaults:
+    _entity_view: node.exam
+    _title: '{title} student printout'
+  requirements:
+    _permission: 'print tads exam'
+tads_exam.exam:
+  path: '/exam/{node}/exam'
+  defaults:
+    _entity_view: node.exam
+    _title: 'Exam {title}'
+  requirements:
+    _permission: 'print tads exam'
+tads_exam.answer_guide:
+  path: '/exam/{node}/answer_guide'
+  defaults:
+    _entity_view: node.answer_guide
+    _title: 'Answer Guide {title}'
+  requirements:
+    _permission: 'score tads exam'

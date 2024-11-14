@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  module:
+    - comment
+id: comment.field_graders_comment
+field_name: field_graders_comment
+entity_type: comment
+type: comment
+settings:
+  comment_type: graders_comments
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

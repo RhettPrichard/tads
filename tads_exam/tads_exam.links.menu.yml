@@ -1,0 +1,12 @@
+tads_exam.example:
+  title: 'Test Exam'
+  description: 'Test Exam link for 04-19-2016-01'
+  parent: system.admin_config_development
+  route_name: tads_exam.studentprintout.example
+  weight: 100
+tads_exam.list_all_exams:
+  title: 'List All Exams'
+  description: 'List all Exams.'
+  url: 'internal:/admin/content?status=All&type=tads_exam&title=&langcode=All'
+  weight: 30
+  menu_name: tools

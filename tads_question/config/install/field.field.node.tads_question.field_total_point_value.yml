@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  config:
+    - field.storage.node.field_total_point_value
+    - node.type.tads_question
+id: node.tads_question.field_total_point_value
+field_name: field_total_point_value
+entity_type: node
+bundle: tads_question
+label: 'Total Point Value'
+description: 'The maximum number of points that the best answer to this question can obtain.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 10
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' pts'
+field_type: integer

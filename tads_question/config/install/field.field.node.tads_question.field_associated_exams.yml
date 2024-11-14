@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  config:
+    - field.storage.node.field_associated_exams
+    - node.type.tads_question
+    - taxonomy.vocabulary.exam_types
+id: node.tads_question.field_associated_exams
+field_name: field_associated_exams
+entity_type: node
+bundle: tads_question
+label: 'Associated Exams'
+description: 'A list of tags, one for each exam this question might be chosen to be used for.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      exam_types: exam_types
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: exam_types
+field_type: entity_reference

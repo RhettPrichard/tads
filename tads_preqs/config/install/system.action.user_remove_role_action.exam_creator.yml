@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: 
+  enforced:
+    module:
+      - tads_preqs
+  config:
+    - user.role.exam_creator
+  module:
+    - user
+id: user_remove_role_action.exam_creator
+label: 'Remove the Exam Creator role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: exam_creator

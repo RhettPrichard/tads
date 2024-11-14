@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  config:
+    - comment.type.answer_given
+    - field.storage.comment.field_finial_points_assigned
+id: comment.answer_given.field_finial_points_assigned
+field_name: field_finial_points_assigned
+entity_type: comment
+bundle: answer_given
+label: 'Finial Points Assigned'
+description: 'Points assigned for the answer given.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' pts.'
+field_type: integer

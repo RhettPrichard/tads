@@ -1,0 +1,53 @@
+<?php
+
+/**
+  * @file
+  *Installation functions for TADs Exam
+  */
+  
+use Drupal\node\Entity\Node;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+  
+/**
+  * Implements hook_install()
+  *
+  */
+
+
+function tads_exam_install()
+{
+  
+  
+  
+  /*$link = MenuLinkContent::create([
+    'title'      => 'List Exams',
+    'link'       => ['uri' => 'internal:/admin/content?status=All&type=exam&title=&langcode=All'],
+    'menu_name'  => 'tools',
+    'weight'     => 30,
+  ]);
+  $link->save();*/
+  
+  
+  
+  
+  /*$node = Node::create([
+    'type' => 'page',
+    'uid' => 1,
+    'revision' => 0,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'My Page Title',
+  ]);
+  
+  $node->set('body', [
+    'value' => '<h1>Welcome to My Page!</h1>',
+    'format' => 'basic_html'
+  ]);
+ 
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/my-page', 'en');*/
+}

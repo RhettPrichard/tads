@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_scenario
+  module:
+    - paragraphs
+id: paragraph.tads_answer_guide_view_mode
+label: 'Answer Guide'
+targetEntityType: paragraph
+cache: true

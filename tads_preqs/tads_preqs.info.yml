@@ -1,0 +1,14 @@
+name: Preqs
+description: Creates Preqs for TADs
+package: TADs
+
+type: module
+core: 8.x
+core_version_requirement: ^10 || ^11
+
+
+test_dependencies:
+ - drupal:dblog
+
+
+hidden: false

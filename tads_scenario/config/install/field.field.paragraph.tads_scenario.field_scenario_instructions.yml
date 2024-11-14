@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_scenario
+  config:
+    - field.storage.paragraph.field_scenario_instructions
+    - paragraphs.paragraphs_type.tads_scenario
+  module:
+    - text
+id: paragraph.tads_scenario.field_scenario_instructions
+field_name: field_scenario_instructions
+entity_type: paragraph
+bundle: tads_scenario
+label: 'Scenario Instructions'
+description: "Instructions on how the question are expected to be answered or figured out.\r\nExample, \"please look at this image and name the parts labeled with letters.\""
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

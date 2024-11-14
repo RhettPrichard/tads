@@ -1,0 +1,17 @@
+name: Question
+description: Creates questions and answers combos for TADs
+package: TADs
+
+type: module
+core: 8.x
+core_version_requirement: ^10 || ^11
+
+dependencies:
+  - tads_preqs
+
+test_dependencies:
+ - drupal:dblog
+
+configure: tads_question.settings.form
+
+hidden: false

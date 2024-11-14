@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_exam
+  config:
+    - field.field.node.tads_exam.body
+    - field.field.node.tads_exam.field_associated_exams
+    - field.field.node.tads_exam.field_scenario
+    - node.type.tads_exam
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.tads_exam.default
+targetEntityType: node
+bundle: tads_exam
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  field_associated_exams:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_scenario:
+    type: entity_reference_revisions_entity_view
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

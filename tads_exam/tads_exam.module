@@ -1,0 +1,19 @@
+<?php
+
+/**
+  *
+  * @file
+  * TADs Exam Module.
+  */
+  
+  
+  /**
+    *
+    *Implements hook_help()
+    */
+function tads_exam_menu_local_tasks_alter(&$data, $route_name)
+{
+  //kint($route_name, $data);
+  //$var = $data['tabs'][0]['exam.exam']['#link']['url'];
+  //kint ($var);
+}

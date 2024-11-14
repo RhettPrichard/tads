@@ -1,0 +1,68 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  module:
+    - text
+    - comment
+    - user
+  config:
+    - core.entity_view_display.comment.answer_given.default
+    - core.entity_view_mode.node.tads_answer_guide_view_mode
+    - field.field.node.tads_question.body
+    - field.field.node.tads_question.field_answer
+    - field.field.node.tads_question.field_answer_given
+    - field.field.node.tads_question.field_associated_exams
+    - field.field.node.tads_question.field_reference
+    - field.field.node.tads_question.field_spacing_between_questions
+    - field.field.node.tads_question.field_total_point_value
+    - node.type.tads_question
+id: node.tads_question.tads_answer_guide_view_mode
+targetEntityType: node
+bundle: tads_question
+mode: tads_answer_guide_view_mode
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  field_answer:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_answer_given:
+    weight: 107
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+  field_reference:
+    weight: 105
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_total_point_value:
+    weight: 103
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_associated_exams: true
+  field_spacing_between_questions: true

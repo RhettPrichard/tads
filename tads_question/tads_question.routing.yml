@@ -1,0 +1,25 @@
+tads_question.content:
+  path: '/say_hello'
+  defaults:
+    _title: 'Hello World'
+    _controller: '\Drupal\tads_question\QuestionController::content'
+  requirements:
+    _permission: 'access content'
+
+
+
+tads_question.generate:
+  path: 'tads_question/generate/{paragraphs}/{phrases}'
+  defaults:
+    _controller: '\Drupal\tads_question\QuestionController::content'
+    #set content to generate after generate is created
+  requirements:
+    _permission: 'generate tads question'
+
+tads_question.settings.form:
+  path: '/admin/config/development/tads_question'
+  defaults:
+    _form: 'Drupal\tads_question\Form\tads_question'
+    _title: 'Tads Question Settings'
+  requirements:
+    _permission: 'administer site configuration'

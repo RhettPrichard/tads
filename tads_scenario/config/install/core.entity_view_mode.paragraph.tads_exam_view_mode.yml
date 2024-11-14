@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_scenario
+  module:
+    - paragraphs
+id: paragraph.tads_exam_view_mode
+label: Exam
+targetEntityType: paragraph
+cache: true

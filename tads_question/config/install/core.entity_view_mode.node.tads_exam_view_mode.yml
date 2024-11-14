@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - tads_question
+  module:
+    - node
+id: node.tads_exam_view_mode
+label: Exam
+targetEntityType: node
+cache: true
