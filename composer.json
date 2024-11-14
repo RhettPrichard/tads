@@ -1,0 +1,18 @@
+{
+    "name": "RhettPrichard/tads",
+    "description": "Testing Analytical Database System.",
+    "keywords": ["drupal","tads"],
+    "homepage": "https://github.com/RhettPrichard/tads",
+    "license": "GPL-2.0-or-later",
+    "type": "composer-plugin",
+    "autoload": {
+      "psr-4": {
+        "Drupal\\Composer\\Plugin\\ProjectMessage\\": "."
+      }
+    },
+    "require": {
+      "php": ">=7.3.0",
+      "composer-plugin-api": "^2"
+    }
+  }
+  
