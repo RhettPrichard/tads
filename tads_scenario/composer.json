@@ -1,10 +1,15 @@
 {
   "name": "drupal/tads_scenario",
-  "description": "Composer.json packaging and description for Drupal TADs Scenario's (Aggregate of Questions).",
+  "description": "Testing Analytical Database System, Composer.json packageing for Drupal Module TADs, TADs Scenario (Aggregate of Questions).",
+  "keywords": [
+    "drupal",
+    "tads",
+    "tads_scenario"
+  ],
   "type": "drupal-module",
-  "license": "GPL-2.0+"
+  "license": "GPL-2.0+",
   "comments": "remove underlines once supporting unsupported options",
-  "homepage": "https://https://tads.visualization-node.info/",
+  "homepage": "https://tads.visualization-node.info/",
   "authors": [
     {
       "name": "Rhett Prichard (rap)",
@@ -13,14 +18,18 @@
     }
   ],
   "support": {
-    "_issues": "https://drupal.org/project/issues/mobile_detect",
-    "_irc": "irc://irc.freenode.org/drupal-contribute",
-    "source": "https://github.com/RhettPrichard/tads.git"
+      "_issues": "https://drupal.org/project/issues/mobile_detect",
+      "_irc": "irc://irc.freenode.org/drupal-contribute",
+      "source": "https://github.com/RhettPrichard/tads.git",
+      "wiki":  "https://github.com/RhettPrichard/tads"
   },
-  "license": "GPL-2.0+",
+  "require": {
+  },
+  "require-dev": {
+  },
   "minimum-stability": "dev",
   "_require": {
-    "remove underscore",
+    "remove underscore": "0",
     "mobiledetect/mobiledetectlib": "~2.8"
   }
 }

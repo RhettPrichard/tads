@@ -2,17 +2,26 @@
     "name": "rhettprichard/tads",
     "description": "Testing Analytical Database System.",
     "keywords": ["drupal","tads"],
-    "homepage": "https://github.com/RhettPrichard/tads",
+    "homepage": "https://tads.visualization-node.info/",
     "license": "GPL-2.0-or-later",
-    "type": "composer-plugin",
-    "autoload": {
-      "psr-4": {
-        "Drupal\\Composer\\Plugin\\ProjectMessage\\": "."
+    "type": "drupal-module",
+    "authors": [
+      {
+        "name": "Rhett Prichard (rap)",
+        "homepage": "https://www.rhettprichard.com",
+        "role": "Maintainer"
       }
+    ],
+    "support": {
+      "_issues": "https://drupal.org/project/issues/mobile_detect",
+      "_irc": "irc://irc.freenode.org/drupal-contribute",
+      "source": "https://github.com/RhettPrichard/tads.git",
+      "wiki":  "https://github.com/RhettPrichard/tads"
     },
+    "minimum-stability": "dev",
     "require": {
-      "php": ">=7.3.0",
-      "composer-plugin-api": "^2"
+    },
+    "require-dev": {
     }
   }
   

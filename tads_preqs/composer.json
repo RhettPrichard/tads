@@ -1,5 +1,41 @@
 {
   "name": "drupal/tads_preqs",
+  "description": "Testing Analytical Database System, Composer.json packageing for Drupal Module TADs, TADs Preqs.",
+  "keywords": [
+    "drupal",
+    "tads",
+    "tads_preqs"
+  ],
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "comments": "remove underlines once supporting unsupported options",
+  "homepage": "https://tads.visualization-node.info/",
+  "authors": [
+    {
+      "name": "Rhett Prichard (rap)",
+      "homepage": "https://www.rhettprichard.com",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+      "_issues": "https://drupal.org/project/issues/mobile_detect",
+      "_irc": "irc://irc.freenode.org/drupal-contribute",
+      "source": "https://github.com/RhettPrichard/tads.git",
+      "wiki":  "https://github.com/RhettPrichard/tads"
+  },
+  "require": {
+  },
+  "require-dev": {
+  },
+  "minimum-stability": "dev",
+  "_require": {
+    "remove underscore": "0",
+    "mobiledetect/mobiledetectlib": "~2.8"
+  }
+}
+
+{
+  "name": "drupal/tads_preqs",
   "description": "Composer.json packaging and description for Drupal TADs Preqs.",
   "type": "drupal-module",
   "license": "GPL-2.0+"
