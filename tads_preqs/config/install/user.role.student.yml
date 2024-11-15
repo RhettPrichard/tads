@@ -11,8 +11,8 @@ is_admin: null
 permissions:
   - 'print tads exam'
   - 'use text format basic_no_editor'
-  - 'view paragraph content scenario'
+  - 'view paragraph content tads scenario'
   - 'access contextual links'
   - 'view own unpublished content'
-  - 'create publish_question workflow_transition'
-  - 'create publish_exam workflow_transition'
+  - 'create publish_tads_question workflow_transition'
+  - 'create publish_tads_exam workflow_transition'
