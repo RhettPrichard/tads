@@ -20,6 +20,6 @@ tads_question.settings.form:
   path: '/admin/config/development/tads_question'
   defaults:
     _form: 'Drupal\tads_question\Form\tads_question'
-    _title: 'Tads Question Settings'
+    _title: 'TADS Question Settings'
   requirements:
     _permission: 'administer site configuration'

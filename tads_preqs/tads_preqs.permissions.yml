@@ -1,59 +1,95 @@
 
-print tads exam:
-  title: 'Print TADS Exams'
-score tads exam:
-  title: 'Score TADS Exams'
-use text format basic_no_editor:
-  title: 'Score TADS Exams'
+
+#comment: Question
+generate tads question:
+  title: 'Generate TADS Questions'
+create tads question content:
+  title: 'Create TADS Questions'
+#comment: Question-View
+view tads question content:
+  title: 'View TADS Questions'
+view own tads question content:
+  title: 'View Owned TADS Questions'
+view tads question revisions:
+  title: 'View TADS Questions Revisions'
+#comment: Question-Edit
+edit tads question content:
+  title: 'Edit TADS Questions (Add Revisions)'
+edit own tads question content:
+  title: 'Edit Owned TADS Questions (Add Revisions)'
+revert tads question revisions:
+  title: 'Revert TADS Questions'
+#comment: Question-Delete
+delete tads question:
+  title: 'Delete TADS Questions'
+delete own tads question:
+  title: 'Delete Owned TADS Questions'
+delete tads question revisions:
+  title: 'Delete TADS Question Revisions'
+delete own tads question revisions:
+  title: 'Delete Owned TADS Question Revisions'
+#comment: Scenario
+create paragraph content tads scenario:
+  title: 'Create TADS Scenario'
+view paragraph content tads scenario:
+  title: 'View TADS Scenario'
+edit paragraph content tads scenario:
+  title: 'Edit TADS Scenario'
+revert paragraph content tads scenario revisions:
+  title: 'Revert TADS Scenario Paragraph'
+delete paragraph content tads scenario:
+  title: 'Delete TADS Scenario Paragraph'
+#comment: Exam
 create tads exam content:
   title: 'Create TADS Exams'
-edit any tads exam content:
+#comment: Exam-View
+view tads exam revisions:
+  title: 'View TADS Exams'
+view own tads exam revisions:
+  title: 'View Owned TADS Exams'
+print tads exam:
+  title: 'Print TADS Exams'
+#comment: Exam-Edit
+edit tads exam content:
   title: 'Edit TADS Exams'
 edit own tads exam content:
   title: 'Edit Owned TADS Exams'
+edit tads exam revisions:
+  title: 'Edit TADS Exams Revisions'
+edit own tads exam revisions:
+  title: 'Edit Owned TADS Exams Revisions'
 revert tads exam revisions:
   title: 'Revert TADS Exams'
-view tads exam revisions:
-  title: 'View TADS Exams'
-create tads question content:
-  title: 'Create TADS Questions'
-edit any tads question content:
-  title: 'Edit TADS Questions'
-edit own tads question content:
-  title: 'Edit Owned TADS Questions'
-revert tads question revisions:
-  title: 'Revert TADS Questions'
-view tads question revisions:
-  title: 'View TADS Questions'
-create paragraph content tads scenario:
-  title: 'Create TADS Scenario'
-update paragraph content tads scenario:
-  title: 'Update TADS Scenario'
-view paragraph content tads scenario:
-  title: 'View TADS Scenario'
-access in-place tads editing:
-  title: 'Access in-place TADS Editing'
-generate tads question:
-  title: 'Generate TADS Questions'
-create publish_tads_question workflow_transition:
-  title: 'Publish TADS Question Workflow Transition'
-create publish_tads_exam workflow_transition:
-  title: 'Publish TADS Exam Workflow Transition'
-delete any tads exam content:
+#comment: Exam-Delete
+delete tads exam content:
   title: 'Delete Any TADS Exams'
 delete own tads exam content:
   title: 'Delete Owned TADS Exams'
 delete tads exam revisions:
   title: 'Delete TADS Exam Revisions'
-delete any tads question content:
-  title: 'Delete TADS Questions'
-delete own tads question content:
-  title: 'Delete Owned TADS Questions'
-delete tads question revisions:
-  title: 'Delete Owned TADS Question Revisions'
-delete paragraph content tads scenario:
-  title: 'Delete TADS Scenario Paragraph'
+delete own tads exam revisions:
+  title: 'Delete Owned TADS Exam Revisions'
+#comment: Exam-Score
+score tads exam:
+  title: 'Score TADS Exams'
+use text format basic_no_editor:
+  title: 'Score TADS Exams'
+access in-place tads editing:
+  title: 'Access in-place TADS Editing'
+answer tads question:
+  title: 'Answer any TADS question given'
+#comment: Taxo
 delete terms in exams_types:
   title: 'Delete TADS Exam Taxonomy'
 edit terms in tads_exams_types:
   title: 'Edit TADS Exam Taxonomy'
+#comment-Transition
+create publish_tads_question workflow_transition:
+  title: 'Publish TADS Question Workflow Transition'
+create publish_tads_exam workflow_transition:
+  title: 'Publish TADS Exam Workflow Transition'
+
+
+
+
+

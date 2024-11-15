@@ -19,7 +19,7 @@ function tads_question_install()
   user_role_change_permissions(
     RoleInterface::ANONYMOUS_ID, 
     array(
-      'generate ' => TRUE,
+      'answer tads question' => TRUE,
     )
   );
   
