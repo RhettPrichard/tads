@@ -11,7 +11,7 @@ dependencies:
   module:
     - entity_reference_revisions
 id: node.tads_exam.field_tads_scenario
-field_name: field_scenario
+field_name: field_tads_scenario
 entity_type: node
 bundle: tads_exam
 label: TADS Scenario
