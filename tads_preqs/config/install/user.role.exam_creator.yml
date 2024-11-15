@@ -21,7 +21,7 @@ permissions:
 #comment: Question
   29: 'create tads question content'
   31: 'delete own tads question content'
-  33: 'edit any tads question content'
+  33: 'edit tads question content'
   34: 'edit own tads question content'
   35: 'revert tads question revisions'
   36: 'view tads question revisions'
@@ -38,7 +38,7 @@ permissions:
   45: 'create tads exam content'
   47: 'delete own tads exam content'
   48: 'delete own tads exam revisions'
-  49: 'edit any tads exam content'
+  49: 'edit tads exam content'
   50: 'edit own tads exam content'
   51: 'revert tads exam revisions'
   52: 'view tads exam revisions'
