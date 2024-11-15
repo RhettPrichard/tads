@@ -34,7 +34,7 @@ permissions:
   30: 'delete paragraph content tads scenario'
   31: 'update paragraph content tads scenario'
   32: 'view paragraph content tads scenario'
-  33: 'access in-place editing'
+  33: 'access in-place tads editing'
   34: 'access contextual links'
   35: 'access files overview'
   36: 'access content overview'
