@@ -7,8 +7,8 @@ dependencies:
   module:
     - paragraphs
     - text
-id: paragraph.field_scenario_context
-field_name: field_scenario_context
+id: paragraph.field_tads_scenario_context
+field_name: field_tads_scenario_context
 entity_type: paragraph
 type: text_with_summary
 settings: {  }

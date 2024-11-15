@@ -5,16 +5,16 @@ dependencies:
     module:
       - tads_exam
   config:
-    - field.storage.node.field_scenario
+    - field.storage.node.field_tads_scenario
     - node.type.tads_exam
     - paragraphs.paragraphs_type.tads_scenario
   module:
     - entity_reference_revisions
-id: node.tads_exam.field_scenario
+id: node.tads_exam.field_tads_scenario
 field_name: field_scenario
 entity_type: node
 bundle: tads_exam
-label: Scenario
+label: TADS Scenario
 description: 'A grouping of questions revolving around a context, set of instruction or figures.'
 required: false
 translatable: false

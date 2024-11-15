@@ -6,8 +6,8 @@ dependencies:
       - tads_exam
   config:
     - field.field.node.tads_exam.body
-    - field.field.node.tads_exam.field_associated_exams
-    - field.field.node.tads_exam.field_scenario
+    - field.field.node.tads_exam.field_associated_tads_exams
+    - field.field.node.tads_exam.field_tads_scenario
     - node.type.tads_exam
   module:
     - entity_reference_revisions

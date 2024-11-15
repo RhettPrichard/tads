@@ -8,8 +8,8 @@ dependencies:
     - file
     - image
     - paragraphs
-id: paragraph.field_scenario_figure
-field_name: field_scenario_figure
+id: paragraph.field_tads_scenario_figure
+field_name: field_tads_scenario_figure
 entity_type: paragraph
 type: image
 settings:

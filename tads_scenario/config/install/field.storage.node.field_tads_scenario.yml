@@ -8,8 +8,8 @@ dependencies:
     - entity_reference_revisions
     - node
     - paragraphs
-id: node.field_scenario
-field_name: field_scenario
+id: node.field_tads_scenario
+field_name: field_tads_scenario
 entity_type: node
 type: entity_reference_revisions
 settings:

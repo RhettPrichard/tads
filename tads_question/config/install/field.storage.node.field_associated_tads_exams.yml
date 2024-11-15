@@ -8,8 +8,8 @@ dependencies:
     - comment
     - node
     - taxonomy
-id: node.field_associated_exams
-field_name: field_associated_exams
+id: node.field_associated_tads_exams
+field_name: field_associated_tads_exams
 entity_type: node
 type: entity_reference
 settings:

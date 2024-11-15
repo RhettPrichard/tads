@@ -5,15 +5,15 @@ dependencies:
     module:
       - tads_exam
   config:
-    - field.storage.node.field_associated_exams
+    - field.storage.node.field_associated_tads_exams
     - node.type.tads_exam
-    - taxonomy.vocabulary.exam_types
-id: node.tads_exam.field_associated_exams
-field_name: field_associated_exams
+    - taxonomy.vocabulary.tads_exam_types
+id: node.tads_exam.field_associated_tads_exams
+field_name: field_associated_tads_exams
 entity_type: node
 bundle: tads_exam
 label: 'Exam Type Tags'
-description: 'A list of tags representing the types of exams this is or the certifications given by the exam.'
+description: 'A list of tags representing the types of TADS exams this is or the certifications given by the TADS exam.'
 required: false
 translatable: true
 default_value: {  }
@@ -22,7 +22,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      exam_types: exam_types
+      exam_types: tads_exam_types
     sort:
       field: _none
     auto_create: true

@@ -14,7 +14,7 @@ field_name: body
 entity_type: node
 bundle: tads_exam
 label: Description
-description: 'The description of the exam and what it is designed to test. Also if possible, list the certification this exam gives if the exam is completed to satisfaction.'
+description: 'The description of the TADS Exam and what it is designed to test. Also if possible, list the certification this exam gives if the exam is completed to satisfaction.'
 required: true
 translatable: true
 default_value: {  }
