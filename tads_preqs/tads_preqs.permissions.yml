@@ -1,0 +1,33 @@
+
+print tads exam:
+  title: 'Print TADs Exams'
+score tads exam:
+  title: 'Score TADs Exams'
+use text format basic_no_editor:
+  title: 'Score TADs Exams'
+create exam content:
+  title: 'Create TADs Exams'
+edit any exam content:
+  title: 'Edit TADs Exams'
+edit own exam content:
+  title: 'Edit Owned TADs Exams'
+revert exam revisions:
+  title: 'Revert TADs Exams'
+view exam revisions:
+  title: 'View TADs Exams'
+create question content:
+  title: 'Create TADs Questions'
+edit any question content:
+  title: 'Edit TADs Questions'
+edit own question content:
+  title: 'Edit Owned TADs Questions'
+revert question revisions:
+  title: 'Revert TADs Questions'
+view question revisions:
+  title: 'View TADs Questions'
+create paragraph content scenario:
+  title: 'Create TADs Scenario'
+update paragraph content scenario:
+  title: 'Update TADs Scenario'
+view paragraph content scenario:
+  title: 'View TADs Scenario'
