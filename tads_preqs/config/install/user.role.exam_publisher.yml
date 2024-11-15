@@ -60,7 +60,7 @@ permissions:
   56: 'bypass node access'
   57: 'administer taxonomy'
   58: 'delete terms in exams_types'
-  59: 'edit terms in exams_types'
+  59: 'edit terms in tads_exams_types'
   60: 'edit terms in tags'
   61: 'create publish_tads_question workflow_transition'
   62: 'create publish_tads_exam workflow_transition'

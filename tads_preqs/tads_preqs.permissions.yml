@@ -39,3 +39,21 @@ create publish_tads_question workflow_transition:
   title: 'Publish TADS Question Workflow Transition'
 create publish_tads_exam workflow_transition:
   title: 'Publish TADS Exam Workflow Transition'
+delete any tads exam content:
+  title: 'Delete Any TADS Exams'
+delete own tads exam content:
+  title: 'Delete Owned TADS Exams'
+delete tads exam revisions:
+  title: 'Delete TADS Exam Revisions'
+delete any tads question content:
+  title: 'Delete TADS Questions'
+delete own tads question content:
+  title: 'Delete Owned TADS Questions'
+delete tads question revisions:
+  title: 'Delete Owned TADS Question Revisions'
+delete paragraph content tads scenario:
+  title: 'Delete TADS Scenario Paragraph'
+delete terms in exams_types:
+  title: 'Delete TADS Exam Taxonomy'
+edit terms in tads_exams_types:
+  title: 'Edit TADS Exam Taxonomy'
