@@ -33,7 +33,7 @@ permissions:
   41: 'edit paragraph content tads scenario'
   42: 'view paragraph content tads scenario'
 #comment: Exam
-  43: 'print tads exam'
+  43: 'print tads exam content'
   44: 'score tads exam'
   45: 'create tads exam'
   47: 'delete own tads exam'

@@ -61,16 +61,16 @@ edit own tads exam revisions:
 revert tads exam revisions:
   title: 'Revert TADS Exams'
 #comment: Exam-Delete
-delete tads exam content:
+delete tads exam:
   title: 'Delete Any TADS Exams'
-delete own tads exam content:
+delete own tads exam:
   title: 'Delete Owned TADS Exams'
 delete tads exam revisions:
   title: 'Delete TADS Exam Revisions'
 delete own tads exam revisions:
   title: 'Delete Owned TADS Exam Revisions'
 #comment: Exam-Score
-score tads exam content:
+score tads exam:
   title: 'Score TADS Exams'
 use text format basic_no_editor:
   title: 'Score TADS Exams'

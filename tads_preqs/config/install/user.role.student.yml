@@ -9,7 +9,7 @@ label: TADS Student
 weight: -8
 is_admin: null
 permissions:
-  - 'print tads exam'
+  - 'print tads exam content'
   - 'use text format basic_no_editor'
   - 'view paragraph content tads scenario'
   - 'access contextual links'
