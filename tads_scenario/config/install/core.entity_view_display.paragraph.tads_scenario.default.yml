@@ -5,9 +5,9 @@ dependencies:
     module:
       - tads_scenario
   config:
-    - field.field.paragraph.tads_scenario.field_scenario_context
-    - field.field.paragraph.tads_scenario.field_scenario_figure
-    - field.field.paragraph.tads_scenario.field_scenario_instructions
+    - field.field.paragraph.tads_scenario.field_tads_scenario_context
+    - field.field.paragraph.tads_scenario.field_tads_scenario_figure
+    - field.field.paragraph.tads_scenario.field_tads_scenario_instructions
     - field.field.paragraph.tads_scenario.field_tads_question
     - paragraphs.paragraphs_type.tads_scenario
   module:

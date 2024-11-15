@@ -5,4 +5,4 @@ dependencies:
     module:
       - tads_scenario
 id: tads_scenario
-label: Scenario
+label: TADS Scenario
