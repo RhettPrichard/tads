@@ -20,6 +20,7 @@
     },
     "minimum-stability": "dev",
     "require": {
+      "drupal/paragraphs": "^1.18"
     },
     "require-dev": {
     }
