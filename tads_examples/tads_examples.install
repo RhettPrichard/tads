@@ -1,0 +1,898 @@
+<?php
+
+/**
+  * @file
+  *Installation functions for TADs Examples
+  */
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\paragraphs\Entity\Paragraph;
+
+  
+
+
+function tads_get_nid_list_we_created()
+{
+  
+  $array_of_nids_created = \Drupal::configFactory()->getEditable('tads_examples.settings')
+    ->get('installed_example_nids');
+      
+  return  $array_of_nids_created;
+}
+function tads_set_nid_list_we_created($list)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_nids', $list)
+      ->save();
+}
+function tads_add_new_nid_to_nid_list_we_created($nid)
+{
+  //Save this now, so crashs still can be mostly removed on uninstall
+    //find existing pile of terms
+    $array_of_nids_created = tads_get_nid_list_we_created();
+    //add to pile of existing terms
+    $array_of_nids_created[] = $nid;
+    // save pile
+    tads_set_nid_list_we_created($array_of_nids_created);
+}
+function tads_get_tid_list_we_created()
+{
+  $array_of_tids_created = \Drupal::configFactory()->getEditable('tads_examples.settings')
+    ->get('installed_example_tids');
+  
+  return  $array_of_tids_created;
+}
+function tads_set_tid_list_we_created($list)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_tids', $list)
+      ->save();
+}
+function tads_add_new_tid_to_tid_list_we_created($tid)
+{
+  //Save this now, so crashs still can be mostly removed on uninstall
+    //find existing pile of terms
+    $array_of_tids_created = tads_get_tid_list_we_created();
+    //add to pile of existing terms
+    $array_of_tids_created[] = $tid;
+    // save pile
+    tads_set_tid_list_we_created($array_of_tids_created);
+}
+function tads_get_pid_list_we_created()
+{
+  
+  $array_of_pids_created = \Drupal::configFactory()->getEditable('tads_examples.settings')
+    ->get('installed_example_pids');
+  
+  return  $array_of_pids_created;
+}
+function tads_set_pid_list_we_created($list)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_pids', $list)
+      ->save();
+}
+function tads_add_new_pid_to_pid_list_we_created($pid)
+{
+  //Save this now, so crashs still can be mostly removed on uninstall
+    //find existing pile of terms
+    $array_of_pids_created = tads_get_pid_list_we_created();
+    //add to pile of existing terms
+    $array_of_pids_created[] = $pid;
+    // save pile
+    tads_set_pid_list_we_created($array_of_pids_created);
+}
+
+
+
+
+
+
+function tads_get_exam_tag_propulsion_tid()
+{
+  $return_tid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_propulsion_tid');
+  
+  return $return_tid;
+}
+function tads_set_exam_tag_propulsion_tid($tid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_propulsion_tid', $tid)
+      ->save();
+}
+function tads_get_exam_tag_propulsion()
+{
+  $propulsion_tag;
+  
+  
+  // Find exsisting tid
+  $propulsion_tid = tads_get_exam_tag_propulsion_tid();
+  
+  if(!$propulsion_tid)
+  {
+    // no tid found, so create term
+    $propulsion_tag = Term::create(
+      [
+        'parent' => array(),
+        'name' => 'Ship propulsion systems',
+        'vid' => exam_types,
+      ]
+    );
+    $propulsion_tag->save();
+    
+    
+    $propulsion_tid = $propulsion_tag->tid->value;
+    // save tid, so that we can erase it later.
+    tads_add_new_tid_to_tid_list_we_created($propulsion_tid);
+    
+    // save tid of term to stash point so i can load it on next request
+    tads_set_exam_tag_propulsion_tid($propulsion_tid);
+  }
+  else
+  {
+    $propulsion_tag = Term::load($propulsion_tid);
+  }
+  return $propulsion_tag;
+}
+function tads_get_exam_tag_tool_tid()
+{
+  $return_tid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_tools_tid');
+  
+  return $return_tid;
+}
+function tads_set_exam_tag_tool_tid($tid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_tools_tid', $tid)
+      ->save();
+}
+function tads_get_exam_tag_tool()
+{
+  $tool_tag;
+  
+  
+  // Find exsisting tid
+  $tool_tid = tads_get_exam_tag_tool_tid();
+  
+  if(!$tool_tid)
+  {
+    // no tid found, so create term
+    $tool_tag = Term::create(
+      [
+        'parent' => array(),
+        'name' => 'Tools',
+        'vid' => exam_types,
+      ]
+    );
+    $tool_tag->save();
+    
+    
+    $tool_tid = $tool_tag->tid->value;
+    // save tid, so that we can erase it later.
+    tads_add_new_tid_to_tid_list_we_created($tool_tid);
+    
+    // save tid of term to stash point so i can load it on next request
+    tads_set_exam_tag_tool_tid($tool_tid);
+  }
+  else
+  {
+    $tool_tag = Term::load($tool_tid);
+  }
+  return $tool_tag;
+}
+
+
+
+
+function tads_get_question_propulsion_part_a_nid()
+{
+  $return_nid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_propulsion_part_a_nid');
+  
+  return $return_nid;
+}
+function tads_set_question_propulsion_part_a_nid($nid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_propulsion_part_a_nid', $nid)
+      ->save();
+}
+function tads_get_question_propulsion_part_a()
+{
+  $propulsion_part_a_question;
+  
+  
+  // Find exsisting nid
+  $propulsion_part_a_question_nid = tads_get_question_propulsion_part_a_nid();
+  
+  if(!$propulsion_part_a_question_nid)
+  {
+    // no nid found, so create node
+    $propulsion_part_a_question = Node::create(
+      [
+        'type' => 'tads_question',
+        'uid' => 1,
+        'revision' => 1,
+        'status' => TRUE,
+        'promote' => 0,
+        'created' => time(),
+        'langcode' => 'en',
+        'title' => 'Image-Part-A=propellor=10pts',
+      ]
+    );
+    $propulsion_part_a_question->set('body', [
+      'value' => '<p>Please name the part labeled A in the attached diagram.</p>',
+      'format' => 'basic_html'
+    ]);
+    $propulsion_part_a_question->set('field_reference', [
+      'value' => '<a href="www.google.com">Book 2, Chapter 1, Paragraph 20</a>',
+      'format' => 'basic_html'
+    ]);
+    $propulsion_part_a_question->set('field_spacing_between_questions', 30);
+    $propulsion_part_a_question->set('field_total_point_value', 10);
+    $propulsion_part_a_question->set('field_answer', [
+      'value' => '<p>Propellor</p>',
+      'format' => 'basic_html'
+    ]);
+    $propulsion_part_a_question->set('field_associated_exams', 
+      [
+        tads_get_exam_tag_propulsion_tid()
+      ]);
+    
+    $propulsion_part_a_question->save();
+    
+    
+    $propulsion_part_a_question_nid = $propulsion_part_a_question->nid->value;
+    // save nid, so that we can erase it later.
+    tads_add_new_nid_to_nid_list_we_created($propulsion_part_a_question_nid);
+    
+    // save nid of node to stash point so i can load it on next request
+    tads_set_question_propulsion_part_a_nid($propulsion_part_a_question_nid);
+  }
+  else
+  {
+    $propulsion_part_a_question = Node::load($propulsion_part_a_question_nid);
+  }
+  return $propulsion_part_a_question;
+}
+
+function tads_get_question_propulsion_part_b_nid()
+{
+  $return_nid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_propulsion_part_b_nid');
+  
+  return $return_nid;
+}
+function tads_set_question_propulsion_part_b_nid($nid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_propulsion_part_b_nid', $nid)
+      ->save();
+}
+function tads_get_question_propulsion_part_b()
+{
+  $propulsion_part_b_question;
+  
+  
+  // Find exsisting nid
+  $propulsion_part_b_question_nid = tads_get_question_propulsion_part_b_nid();
+  
+  if(!$propulsion_part_b_question_nid)
+  {
+    // no nid found, so create node
+    $propulsion_part_b_question = Node::create(
+      [
+        'type' => 'tads_question',
+        'uid' => 1,
+        'revision' => 1,
+        'status' => TRUE,
+        'promote' => 0,
+        'created' => time(),
+        'langcode' => 'en',
+        'title' => 'Image-Part-B=propeller_nut=10pts',
+      ]
+    );
+    $propulsion_part_b_question->set('body', [
+      'value' => '<p>Please name the part labeled B in the attached diagram.</p>',
+      'format' => 'basic_html'
+    ]);
+    $propulsion_part_b_question->set('field_reference', [
+      'value' => '<a href="www.google.com">Book 6, Chapter 4, Paragraph 12</a>',
+      'format' => 'basic_html'
+    ]);
+    $propulsion_part_b_question->set('field_spacing_between_questions', 3);
+    $propulsion_part_b_question->set('field_total_point_value', 10);
+    $propulsion_part_b_question->set('field_answer', [
+      'value' => '<p>Propellor Nut</p>',
+      'format' => 'basic_html'
+    ]);
+    $propulsion_part_b_question->set('field_associated_exams', 
+      [
+        tads_get_exam_tag_propulsion_tid()
+      ]);
+    
+    $propulsion_part_b_question->save();
+    
+    
+    $propulsion_part_b_question_nid = $propulsion_part_b_question->nid->value;
+    // save nid, so that we can erase it later.
+    tads_add_new_nid_to_nid_list_we_created($propulsion_part_b_question_nid);
+    
+    // save nid of node to stash point so i can load it on next request
+    tads_set_question_propulsion_part_b_nid($propulsion_part_b_question_nid);
+  }
+  else
+  {
+    $propulsion_part_b_question = Node::load($propulsion_part_b_question_nid);
+  }
+  return $propulsion_part_b_question;
+}
+
+function tads_get_question_propulsion_part_c_nid()
+{
+  $return_nid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_propulsion_part_c_nid');
+  
+  return $return_nid;
+}
+function tads_set_question_propulsion_part_c_nid($nid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_propulsion_part_c_nid', $nid)
+      ->save();
+}
+function tads_get_question_propulsion_part_c()
+{
+  $propulsion_part_c_question;
+  
+  
+  // Find exsisting nid
+  $propulsion_part_c_question_nid = tads_get_question_propulsion_part_c_nid();
+  
+  if(!$propulsion_part_c_question_nid)
+  {
+    // no nid found, so create node
+    $propulsion_part_c_question = Node::create(
+      [
+        'type' => 'tads_question',
+        'uid' => 1,
+        'revision' => 1,
+        'status' => TRUE,
+        'promote' => 0,
+        'created' => time(),
+        'langcode' => 'en',
+        'title' => 'Image-Part-C=propeller_shaft=10pts',
+      ]
+    );
+    $propulsion_part_c_question->set('body', [
+      'value' => '<p>Please name the part labeled C in the attached diagram.</p>',
+      'format' => 'basic_html'
+    ]);
+    $propulsion_part_c_question->set('field_reference', [
+      'value' => '<a href="www.google.com">Book 2, Chapter 1, Paragraph 16</a>',
+      'format' => 'basic_html'
+    ]);
+    $propulsion_part_c_question->set('field_spacing_between_questions', 3);
+    $propulsion_part_c_question->set('field_total_point_value', 10);
+    $propulsion_part_c_question->set('field_answer', 
+      [
+        [
+          'value' => '<p>Propellor Shaft (10pts)</p>',
+          'format' => 'basic_html'
+        ],
+        [
+          'value' => '<p>Shaft (7pts)</p>',
+          'format' => 'basic_html'
+        ],
+      ]);
+    $propulsion_part_c_question->set('field_associated_exams', 
+      [
+        tads_get_exam_tag_propulsion_tid()
+      ]);
+    
+    $propulsion_part_c_question->save();
+    
+    
+    $propulsion_part_c_question_nid = $propulsion_part_c_question->nid->value;
+    // save nid, so that we can erase it later.
+    tads_add_new_nid_to_nid_list_we_created($propulsion_part_c_question_nid);
+    
+    // save nid of node to stash point so i can load it on next request
+    tads_set_question_propulsion_part_c_nid($propulsion_part_c_question_nid);
+  }
+  else
+  {
+    $propulsion_part_c_question = Node::load($propulsion_part_c_question_nid);
+  }
+  return $propulsion_part_c_question;
+}
+
+function tads_get_question_tool_blade_nid()
+{
+  $return_nid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_tool_blade_nid');
+  
+  return $return_nid;
+}
+function tads_set_question_tool_blade_nid($nid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_tool_blade_nid', $nid)
+      ->save();
+}
+function tads_get_question_tool_blade()
+{
+  $tool_blade_question;
+  
+  
+  // Find exsisting nid
+  $tool_blade_question_nid = tads_get_question_tool_blade_nid();
+  
+  if(!$tool_blade_question_nid)
+  {
+    // no nid found, so create node
+    $tool_blade_question = Node::create(
+      [
+        'type' => 'tads_question',
+        'uid' => 1,
+        'revision' => 1,
+        'status' => TRUE,
+        'promote' => 0,
+        'created' => time(),
+        'langcode' => 'en',
+        'title' => 'Tool-Describe-screwdriver-part-blade=10pts',
+      ]
+    );
+    $tool_blade_question->set('body', [
+      'value' => '<p>Name the tip of a screwdriver by name.</p>',
+      'format' => 'basic_html'
+    ]);
+    $tool_blade_question->set('field_reference', [
+      'value' => '<a href="www.google.com">Book 2, Chapter 1, Paragraph 20</a>',
+      'format' => 'basic_html'
+    ]);
+    $tool_blade_question->set('field_spacing_between_questions', 10);
+    $tool_blade_question->set('field_total_point_value', 10);
+    $tool_blade_question->set('field_answer', 
+      [
+        [
+          'value' => '<p>Blade</p>',
+          'format' => 'basic_html'
+        ]
+      ]);
+    $tool_blade_question->set('field_associated_exams', 
+      [
+        tads_get_exam_tag_tool_tid()
+      ]);
+    
+    $tool_blade_question->save();
+    
+    
+    $tool_blade_question_nid = $tool_blade_question->nid->value;
+    // save nid, so that we can erase it later.
+    tads_add_new_nid_to_nid_list_we_created($tool_blade_question_nid);
+    
+    // save nid of node to stash point so i can load it on next request
+    tads_set_question_tool_blade_nid($tool_blade_question_nid);
+  }
+  else
+  {
+    $tool_blade_question = Node::load($tool_blade_question_nid);
+  }
+  return $tool_blade_question;
+}
+function tads_get_question_tool_handle_nid()
+{
+  $return_nid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_question_tool_handle_nid');
+  
+  return $return_nid;
+}
+function tads_set_question_tool_handle_nid($nid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_question_tool_handle_nid', $nid)
+      ->save();
+}
+function tads_get_question_tool_handle()
+{
+  $tool_handle_question;
+  
+  
+  // Find exsisting nid
+  $tool_handle_question_nid = tads_get_question_tool_handle_nid();
+  
+  if(!$tool_handle_question_nid)
+  {
+    // no nid found, so create node
+    $tool_handle_question = Node::create(
+      [
+        'type' => 'tads_question',
+        'uid' => 1,
+        'revision' => 1,
+        'status' => TRUE,
+        'promote' => 0,
+        'created' => time(),
+        'langcode' => 'en',
+        'title' => 'Tool-Describe-screwdriver-part-handle=10pts',
+      ]
+    );
+    $tool_handle_question->set('body', [
+      'value' => '<p>What is the name of the part of a screwdriver that you hold?</p>',
+      'format' => 'basic_html'
+    ]);
+    $tool_handle_question->set('field_reference', [
+      'value' => '<a href="www.google.com">Book 2, Chapter 1, Paragraph 20</a>',
+      'format' => 'basic_html'
+    ]);
+    $tool_handle_question->set('field_spacing_between_questions', 10);
+    $tool_handle_question->set('field_total_point_value', 10);
+    $tool_handle_question->set('field_answer', 
+      [
+        [
+          'value' => '<p>Handle</p>',
+          'format' => 'basic_html'
+        ]
+      ]);
+    $tool_handle_question->set('field_associated_exams', 
+      [
+        tads_get_exam_tag_tool_tid()
+      ]);
+    
+    $tool_handle_question->save();
+    
+    
+    $tool_handle_question_nid = $tool_handle_question->nid->value;
+    // save nid, so that we can erase it later.
+    tads_add_new_nid_to_nid_list_we_created($tool_handle_question_nid);
+    
+    // save nid of node to stash point so i can load it on next request
+    tads_set_question_tool_handle_nid($tool_handle_question_nid);
+  }
+  else
+  {
+    $tool_handle_question = Node::load($tool_handle_question_nid);
+  }
+  return $tool_handle_question;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function tads_get_paragraph_propulsion_pid()
+{
+  $return_pid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_paragraph_propulsion_pid');
+  
+  return $return_pid;
+}
+function tads_set_paragraph_propulsion_pid($pid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_paragraph_propulsion_pid', $pid)
+      ->save();
+}
+function tads_get_paragraph_propulsion()
+{
+  $propulsion_paragraph;
+  
+  
+  // Find exsisting pid
+  $propulsion_paragraph_pid = tads_get_paragraph_propulsion_pid();
+  
+  if(!$propulsion_paragraph_pid)
+  {
+    // no pid found, so create paragraph
+    $propulsion_paragraph = Paragraph::create(
+      [
+        'type' => 'tads_scenario',
+        'field_scenario_instructions' => 
+          [
+            'value' => '<p>This is a propulsion system, name the parts listed.</p>',
+            'format' => 'basic_html'
+          ],
+        'field_scenario_context' => 
+          [
+            'value' => '<p>Image of propulsion system.</p>',
+            'format' => 'basic_html'
+          ],
+      ]
+    );
+    $propulsion_paragraph->field_tads_question->appendItem(tads_get_question_propulsion_part_a());
+    $propulsion_paragraph->field_tads_question->appendItem(tads_get_question_propulsion_part_b());
+    $propulsion_paragraph->field_tads_question->appendItem(tads_get_question_propulsion_part_c());
+    
+    $propulsion_paragraph->save();
+    
+    
+    $propulsion_paragraph_pid = $propulsion_paragraph->id->value;
+    // save pid, so that we can erase it later.
+    tads_add_new_pid_to_pid_list_we_created($propulsion_paragraph_pid);
+    
+    // save pid of term to stash point so i can load it on next request
+    tads_set_paragraph_propulsion_pid($propulsion_paragraph_pid);
+  }
+  else
+  {
+    $propulsion_paragraph = Paragraph::load($propulsion_paragraph_pid);
+  }
+  return $propulsion_paragraph;
+}
+function tads_get_paragraph_tool_pid()
+{
+  $return_pid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_paragraph_tool_pid');
+  
+  return $return_pid;
+}
+function tads_set_paragraph_tool_pid($pid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_paragraph_tool_pid', $pid)
+      ->save();
+}
+function tads_get_paragraph_tool()
+{
+  $tool_paragraph;
+  
+  // Find exsisting pid
+  $tool_paragraph_pid = tads_get_paragraph_tool_pid();
+  if(!$tool_paragraph_pid)
+  {
+    
+    // no pid found, so create paragraph
+    $tool_paragraph = Paragraph::create(
+      [
+        'type' => 'tads_scenario',
+        'field_scenario_instructions' => 
+          [
+            'value' => '<p>Describe a screwdriver and the options it might have.</p>',
+            'format' => 'basic_html'
+          ],
+        'field_scenario_context' => 
+          [
+            'value' => '<p>N/A</p>',
+            'format' => 'basic_html'
+          ]
+      ]
+    );
+    $tool_paragraph->field_tads_question->appendItem(tads_get_question_tool_blade());
+    $tool_paragraph->field_tads_question->appendItem(tads_get_question_tool_handle());
+        
+    $tool_paragraph->save();
+        
+    $tool_paragraph_pid = $tool_paragraph->id->value;
+    // save pid, so that we can erase it later.
+    tads_add_new_pid_to_pid_list_we_created($tool_paragraph_pid);
+        
+    // save pid of paragraph to stash point so i can load it on next request
+    tads_set_paragraph_tool_pid($tool_paragraph_pid);
+  }
+  else
+  {
+    $tool_paragraph = Paragraph::load($tool_paragraph_pid);
+  }
+  return $tool_paragraph;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function tads_get_exam_39b_nid()
+{
+  $return_nid = \Drupal::configFactory()->get('tads_examples.settings')
+      ->get('installed_example_exam_39b_nid');
+  
+  return $return_nid;
+}
+function tads_set_exam_39b_nid($nid)
+{
+  \Drupal::configFactory()->getEditable('tads_examples.settings')
+      ->set('installed_example_exam_39b_nid', $nid)
+      ->save();
+}
+function tads_get_exam_39b()
+{
+  $exam_39b;
+  
+  
+  // Find exsisting nid
+  $exam_39b_nid = tads_get_exam_39b_nid();
+  
+  if(!$exam_39b_nid)
+  {
+    // no nid found, so create paragraph
+    $exam_39b = Node::create(
+      [
+        'type' => 'tads_exam',
+        'uid' => 1,
+        'revision' => 1,
+        'status' => TRUE,
+        'promote' => 0,
+        'created' => time(),
+        'langcode' => 'en',
+        'title' => 'Exam 39B',
+      ]
+    );
+    $exam_39b->set('body', 
+      [
+        'value' => '<p>Exam for department 39, job B.</p>',
+        'format' => 'basic_html'
+      ]
+    );
+    $exam_39b->set('field_associated_exams', 
+      [
+        tads_get_exam_tag_propulsion_tid(),
+        tads_get_exam_tag_tool_tid()
+      ]
+    );
+    
+    /*$exam_39b->set('field_scenario', 
+      [
+        [
+          'target_id' => tads_get_paragraph_propulsion_pid(),
+          'target_revision_id' => tads_get_paragraph_propulsion()->getRevisionId()
+        ],
+        [
+          'target_id' => tads_get_paragraph_tool_pid(),
+          'target_revision_id' => tads_get_paragraph_tool()->getRevisionId()
+        ]
+      ]
+    );*/
+    $exam_39b->field_scenario->appendItem(tads_get_paragraph_propulsion());
+    $exam_39b->field_scenario->appendItem(tads_get_paragraph_tool());
+    
+
+    $exam_39b->save();
+    file_put_contents('/var/log/drupal/field_scenario.log', $exam_39b->get('field_scenario'));
+    //var_dump($exam_39b->get('field_scenario'));
+    
+    
+    $exam_39b_nid = $exam_39b->nid->value;
+    
+    
+    //Set alias for menu to use
+    $source = '/node/' . $exam_39b_nid;
+    \Drupal::service('path.alias_storage')->save($source, '/exam/39b', 'en');
+  
+    // save nid, so that we can erase it later.
+    tads_add_new_nid_to_nid_list_we_created($exam_39b_nid);
+    
+    // save nid of term to stash point so i can load it on next request
+    tads_set_exam_39b_nid($exam_39b_nid);
+  }
+  else
+  {
+    $exam_39b = Node::load($exam_39b_nid);
+  }
+  return $exam_39b;
+}
+
+
+
+
+
+
+function tads_create_exam_tags()
+{ 
+  $propulsion_tag = tads_get_exam_tag_propulsion();
+  
+  $tool_tag = tads_get_exam_tag_tool();
+}
+
+
+function tads_create_questions()
+{
+  tads_get_question_propulsion_part_a();
+  tads_get_question_propulsion_part_b();
+  tads_get_question_propulsion_part_c();
+  tads_get_question_tool_blade();
+  tads_get_question_tool_handle();
+}
+
+
+function tads_create_paragraphs()
+{
+  tads_get_paragraph_propulsion();
+  tads_get_paragraph_tool();
+}
+
+
+function tads_create_exams()
+{ 
+  tads_get_exam_39b();
+}
+
+
+
+
+
+/**
+  * Implements hook_install()
+  *
+  */
+function tads_examples_install()
+{
+  
+  tads_create_exam_tags();
+  tads_create_questions();
+  tads_create_paragraphs();
+  tads_create_exams();
+  
+
+}
+
+
+
+
+function tads_examples_uninstall_paragraphs()
+{
+  $array_of_pids_created = tads_get_pid_list_we_created();
+  
+  if (!empty($array_of_pids_created))
+  {
+    entity_delete_multiple('paragraph', $array_of_pids_created);
+  }
+  $empty_array = [];
+  tads_set_pid_list_we_created($empty_array);
+}
+function tads_examples_uninstall_nodes()
+{
+  $array_of_nids_created = tads_get_nid_list_we_created();
+  
+  if (!empty($array_of_nids_created))
+  {
+    entity_delete_multiple('node', $array_of_nids_created);
+  }
+  $empty_array = [];
+  tads_set_nid_list_we_created($empty_array);
+}
+function tads_examples_uninstall_terms()
+{
+  $array_of_tids_created = tads_get_tid_list_we_created();
+  
+  if (!empty($array_of_tids_created))
+  {
+    entity_delete_multiple('taxonomy_term', $array_of_tids_created);
+  }
+  $empty_array = [];
+  tads_set_tid_list_we_created($empty_array);
+}
+
+/**
+  * Implements hook_uninstall()
+  *
+  */
+function tads_examples_uninstall()
+{
+  tads_examples_uninstall_paragraphs();
+  tads_examples_uninstall_nodes();
+  tads_examples_uninstall_terms();
+}

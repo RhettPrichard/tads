@@ -1,0 +1,949 @@
+<?php
+
+/**
+  * @file
+  *Installation functions for TADs Minimum Documentation
+  */
+  
+use Drupal\node\Entity\Node;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+  
+/**
+  * Implements hook_install()
+  *
+  */
+
+
+function tads_minimum_documentation_install()
+{
+  
+  $array_of_nids_created = [];
+  
+  
+  $node = Node::create([
+    'type' => 'page',
+    'uid' => 1,
+    'revision' => 0,
+    'status' => TRUE,
+    'promote' => 1,
+    'created' => time(),
+    'langcode' => 'en',
+    'sticky' => 1,
+    'title' => 'How to use TADs (Quick Start)',
+  ]);
+  
+  $node->set('body', [
+    'value' => '<p><strong>Instructions for use:</strong></p>
+
+<p>After logging in as either the Teacher, Creator or Publisher, &nbsp;you can see and click on&nbsp;the “List Exams” menu item on the tools menu. This will show you all exams already on the system, and let you filter the search further.</p>
+
+<p>Click on the tab called Exam 39B at the top of the page, this is a small 5 questions exam that has been created for this example. Once on that exam\'s page, you will have access to a second row of tabs. &nbsp;Here you will have&nbsp;the ability to view, edit, look at the print preview, and look at the answer guide.</p>
+
+<p>The print preview&nbsp;respects the spacing request by each question before the next question, this allows adjustable answer sizes. The answer guide&nbsp;shows a link to the original question, the question text,&nbsp;links for references if given in the question,&nbsp;the list of acceptable answers for each question, and the total point value for a correct answer. We may make this a little less bulky after some feed back, but for now its basically showing everything.</p>
+
+<p>&nbsp;</p>
+
+<p>For information on the creation of exams and questions, see the quick create guide <a href="/quickcreate">here</a>.</p>
+',
+    'format' => 'basic_html'
+  ]);
+ 
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/quickstart', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  
+/*  $link = MenuLinkContent::create([
+    'title'      => 'Quick Start',
+    'link'       => ['uri' => 'internal:/quickstart'],
+    'menu_name'  => 'main',
+    'weight'     => 90,
+  ]);
+  $link->save();*/
+  
+  
+  
+  
+  $node = Node::create([
+    'type' => 'page',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 1,
+    'created' => time(),
+    'langcode' => 'en',
+    'sticky' => 1,
+    'title' => 'How to use TADs (Quick Create)',
+  ]);
+  
+  $node->set('body', [
+    'value' => '<p><strong>Instructions for use:</strong></p>
+
+<p>After logging in as either the Creator or Publisher, &nbsp;you can see and click on&nbsp;the “add content” menu item on the tools menu.</p>
+
+<p>This system has users that fit into several roles, groups or categories.&nbsp; This system has the ability to log in as a Student, Teacher, Creator, or Publisher.</p>
+
+<p>Creator: can create but not publish questions and exams.</p>
+
+<p>Publisher: can create and publish.&nbsp; To publish means certifying&nbsp;the question or exam as approved for teachers to be able to use.&nbsp; This represents the approval process for exams to be activated&nbsp;after the exam&nbsp;has been checked and verified.</p>
+
+<p><a href="/manual/1/1">More Info on Roles</a></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Directions for Questions:</strong>&nbsp; To add a question first click “add content” under the&nbsp;tools bar.&nbsp; Then click on the option for "question".&nbsp; A page will open that says “<strong>Create Questions”</strong> at the top of the page.&nbsp;</p>
+
+<ol>
+	<li>The first field you type&nbsp;is the question&nbsp;title.&nbsp;</li>
+	<li>The second field is the question the student will see.&nbsp;</li>
+	<li>In the third field click the arrows up or down to raise or lower the total points value earned for the question.&nbsp;</li>
+	<li>The fourth field write in the reference.&nbsp;</li>
+	<li>The fifth field write in the answer to the question.&nbsp;</li>
+	<li>The sixth field click the arrows up or down to add in the amount of spacing you want between questions.&nbsp;</li>
+	<li>A list of tags that say what type of exams this question should be used for. Tag this "Math" if you want all exams that need maths questions to find it as a possible answer.</li>
+	<li>Lastly at the bottom of the page there are several&nbsp;settings tabs depending on how many roles you have. NONE of these should need to be changed. If you are editing an already saved question, the tabs will be on the right top.
+	<ol>
+		<li>Comment settings,&nbsp;leave the comment setting tab set to open.</li>
+		<li>The revision setting needs to always be left at revision otherwise you lose the ability to track changes.</li>
+		<li>Authoring information, no options should need to be changed.</li>
+		<li>Book outline, leave at "None".</li>
+	</ol>
+	</li>
+	<li>Then click save as a creator role&nbsp;or save and unpublished if you have a&nbsp;publisher role.</li>
+	<li>If you choose to verify this question and want to make it active, after you save it, edit it again, and&nbsp;click&nbsp;save and publish.</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p><a href="/manual/2">Description of a question\s&nbsp;fields</a></p>
+
+<p><a href="/manual/2/1">Example of questions</a></p>
+
+<p>&nbsp;</p>
+
+<p><strong>Directions for Exams:</strong>&nbsp; To add an exam first click “add content” under the&nbsp;tools bar.&nbsp; Then click on the option for "exam".&nbsp; A page will open that says “<strong>Create Exam”</strong> at the top of the page.&nbsp;</p>
+
+<ol>
+	<li>The first field you type&nbsp;is the Exam&nbsp;title.&nbsp;</li>
+	<li>The second field describes what the exam will test&nbsp;on.</li>
+	<li>Click the "Add Scenario" button. &nbsp;Then you will have three pieces of common information that can be shared between the questions. &nbsp;You can choose one or all of these options.&nbsp;
+	<ol>
+		<li>Under add a new file, click "Choose Files" to add an image.</li>
+		<li>To add instructions to the exam, type it into the Scenario Instructions field.</li>
+		<li>To add context, type it into the&nbsp;Scenario Context field.</li>
+		<li>Under the "Question" field, type in the title of the question.</li>
+		<li>If you have another question click "add another item" and repeat step&nbsp;4.</li>
+	</ol>
+	</li>
+	<li>Lastly at the bottom of the page there are several&nbsp;settings tabs depending on how many roles you have. NONE of these should need to be changed. If you are editing an already saved exam, the tabs will be on the right top.
+	<ol>
+		<li>Comment settings,&nbsp;leave the comment setting tab set to open.</li>
+		<li>The revision setting needs to always be left at revision otherwise you lose the ability to track changes.</li>
+		<li>Authoring information, no options should need to be changed.</li>
+		<li>Book outline, leave at "None".</li>
+	</ol>
+	</li>
+	<li>Then click save as a creator role&nbsp;or save and unpublished if you have a&nbsp;publisher role.</li>
+	<li>If you choose to verify this exam and want to make it active, after you save it, edit it again, and&nbsp;click&nbsp;save and publish.</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p><a href="/manual/4">Description of a exam\'s&nbsp;fields</a></p>
+
+<p><a href="/manual/4/1">Example of exams</a></p>
+
+<p><a href="/manual/5">Description of a scenario\'s&nbsp;fields</a></p>
+
+<p><a href="/manual/5/1">Example of scenarios</a></p>',
+    'format' => 'basic_html'
+  ]);
+ 
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/quickcreate', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  
+/*  $link = MenuLinkContent::create([
+    'title'      => 'Quick Create',
+    'link'       => ['uri' => 'internal:/quickcreate'],
+    'menu_name'  => 'main',
+    'weight'     => 91,
+  ]);
+  $link->save();*/
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Manual',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Manual for TADs beta 1.</p>
+
+<p>What:</p>
+
+<p>This first beta of the TADs system only deals with version control of&nbsp;exams and questions. This was the proof of concept requested in May of 2016.</p>
+
+<p>Why:</p>
+
+<p>This system was created to prove a concept, that questions and exams could be revision controlled, allowing approval processes and tracking for entire testing suites.</p>
+
+<p>Next:</p>
+
+<p>Features to be enabled next include to become a full suite.</p>
+
+<ul>
+	<li>Improved widget allowing selection&nbsp;of&nbsp;different versions of a question.</li>
+	<li>Teacher access for setting test scores and student answers.</li>
+	<li>Student access for test scores and direct online testing.</li>
+	<li>Analytics for question response accuracy.</li>
+	<li>Certification of students.</li>
+	<li>Automatic testing by student groups and expiration dates of existing certification.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>Following is a list of chapters, or you can use the link on the bottom right to jump to the next page.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book = ['bid' => 'new'];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual', 'en');
+  
+  
+  $manual_top_level_nid = $node->get('nid')->value;
+  $manual_top_level_pid = $node->book['pid'];
+  $array_of_nids_created[] = $manual_top_level_nid;
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Work Flow',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>This system is built around a concept of a work flow, the flow goes like this.(See <a href="/how_to_use_tads/1/1">here</a> for an explanation on <strong>Creator</strong>/<strong>Publisher</strong>/<strong>Approver</strong>)</p>
+
+<ol>
+	<li>A <strong>Creator</strong>&nbsp;logs in and create some questions they want to ask on a future test. They have a concept in mind, one which loosely collects certain questions in a group of 1 or more questions and give each grouping some context or common instructions. This question is consider private and allows only its single account that creates it and the publishers to see it.&nbsp;<a href="/how_to_use_tads/2">More Info</a></li>
+	<li>An <strong>Approver</strong> or <strong>Publisher</strong>&nbsp;logs in and looks over the questions approves the design and then places them in a published or active state, this allows them to be added to exams by any <strong>Creator</strong> or <strong>Publisher</strong>. <a href="/how_to_use_tads/3">More Info</a></li>
+	<li>A <strong>Creator</strong> logs in a create a new exam to use the questions they have already created and has been approved. They give it a title and set of associated exam types that will allow it to be found by those that require the certification it provides once passes. <a href="/how_to_use_tads/4">More Info</a></li>
+	<li>A <strong>Creator</strong> logs in and adds 1 or more scenarios to the exam, each scenario is the&nbsp;images, context and instructions that is common and loosely gathers questions together. After providing the common portion, they add several question by title to each scenario and save the edit to the original exam. <a href="/how_to_use_tads/5">More Info</a></li>
+	<li>An <strong>Approver </strong>or <strong>Publisher </strong>verifies the exam to match standards and requirements for this certification and any govering bodies additional requirements and marks as Approved/Published or send it back to be edited again. <a href="/how_to_use_tads/6">More Info</a></li>
+	<li>A Creator takes an existing exam, and manually creates a new copy&nbsp;makes the neccassary changes to have the differences required for the next exam in that series, and submits it for publishing/approval. The existing exam is not touched and can still be given out to the student requiring it. The original exam can be edited for minor correction, but would need to be resubmitted for approval/publishing to make sure nothing required was changed. There are several conditionals or caveats to how exams are use, and edited, so follow the link to read up on this.&nbsp;&nbsp;<a href="/how_to_use_tads/7">More Info</a></li>
+	<li>A creator can take an existing question and edit it directly, allowing for multiple version to concurrently exist and be used in different exams. As long as the exam pointing to it, is not edited, the exam will still point to the correct version of the question, no matter&nbsp;how many version are saved.&nbsp;<a href="/how_to_use_tads/8">More Info</a></li>
+</ol>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_top_level_nid,
+                  'weight' => 10];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/1', 'en');
+  
+  $manual_work_flow_nid = $node->get('nid')->value;
+  $manual_work_flow_pid = $node->book['pid'];
+  $array_of_nids_created[] = $manual_work_flow_nid;
+  
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Users and Roles',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>This system has 4 roles a user can have, student, teacher, creator and publisher.</p>
+
+<ul>
+	<li>Students do not currently log in and exist so that we can assign a test to them and have it tracked as something they have completed or not, also so we can find out what else they need to take.</li>
+	<li>Teachers log in, print out exams for students and then enter the answer from the student. (Only printing works in beta 1, entering will come soon).</li>
+	<li>Creators make questions and exams, edit existing ones for grammar or outdated material.</li>
+	<li>Approver or Publisher take the questions and exam made by others and approve them for use.</li>
+</ul>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_work_flow_nid];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/1/1', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Questions',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Questions are wrapped packages of information that represent a question, its answers, scoring&nbsp;and other details required to make a question work in an exam.</p>
+
+<p>If edited, you will return no yes far</p>
+
+<p><strong>Description of details of a wrapped inside a question:&nbsp;</strong></p>
+
+<p><strong>Question Title</strong>- a short version of&nbsp; the question and usually includes the answer and point value&nbsp;(not shown to students).&nbsp; The purpose of this title is to find the question in a list easier for later, &nbsp;and to separate it from the same question with different point values or different answers.&nbsp;</p>
+
+<p>Example: "What is part C on the diagram?" vs "What is part C on the diagram?" , one worth 10 points and with the answer "Nut" and the other worth 15 points and having the answer "Bolt". In response to this, we recommend the two questions listed have the following titles. "image-part-c=nut=10pts" and&nbsp;"image-part-c=bolt=15pts" so they can be found easily when looking for a questions for an image with the label of C amount thousands of others.</p>
+
+<p><strong>Question</strong>- the text of the question that will be shown to the student, both a full version and a summary if the full version is too long for some places where a summary might be useful.</p>
+
+<p><strong>Total Points Value</strong>- assign a point value for each question answered 100% correctly.</p>
+
+<p>You can add full value points for correct answer and half value points for partial answers.</p>
+
+<p><strong>Reference-</strong>&nbsp;is a location in a book to find the answer.&nbsp; If you have an ability to use an online reference then you can use an A tag html link to connect it.</p>
+
+<p><strong>Answer-</strong>&nbsp;a list of all answers. Full and alternative answer do not show points since they are assumed to be worth the full points in the above field called "Total Point Value". Partial answers need to say what they are worth below that of the total. If you expect several partial answers the total can never be worth more points that the field "Total Point Value", even if you decide&nbsp;separately they could be.&nbsp;See&nbsp;<a href="https://tads.visualization-node.info/answer_points_example">Example</a>&nbsp;for more information.</p>
+
+<p><strong>Spacing Between Questions</strong>- a number of lines to skip before printing out the next question to allow handwritten answer to fit. A simple word of phrase may only need 5-10 lines depending on how small the student writes, but a full essay may require 30-50 lines.</p>
+
+<p><strong>Associated Exams- &nbsp;</strong>gives you unlimited&nbsp;ways to&nbsp;organize the exam&nbsp;by&nbsp;topic which gives the flexibility of&nbsp;adding questions into different scenarios.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_top_level_nid,
+                  'weight' => 20];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/2', 'en');
+  
+  $manual_question_nid = $node->get('nid')->value;
+  $manual_question_pid = $node->book['pid'];
+  $array_of_nids_created[] = $manual_question_nid;
+  
+  
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Question Examples',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Below are the step to create 5 questions, 3 about propulsion systems and 2 about tools.</p>
+
+<p>&nbsp;</p>
+
+<p>After logging in on the top right corner of the website, in the tools menu on the middle of the left side of&nbsp;the screen their will be an "Add content" menu item, Click it. Once there, you will need to select "Question" from the list of links&nbsp;to add a question. Type the below answer into each field.</p>
+
+<ol>
+	<li>Title: "image-part-a=propeller=10pts"</li>
+	<li>Question: "Name the part labeled A in the image."</li>
+	<li>Total Point Value: 10&nbsp;</li>
+	<li>Reff:&nbsp;"&lt;a href="http://www.manual.com/b1/c4/p16"&gt;Book 1, Chapter 4, Paragraph 16&lt;/a&gt;"</li>
+	<li>Answer: "Propeller"</li>
+	<li>Spacing between questions: 10&nbsp;</li>
+	<li>Associated Exams: "Propulsion systems"</li>
+	<li>"Add another item" then add&nbsp;Associated Exams: &nbsp;"Engineering"</li>
+	<li>Lastly at the bottom of the page there are two settings tabs on edit, and several tabs on the right side if you are creating a new question.&nbsp; One for comments and one for revisions.&nbsp;
+	<ol>
+		<li>Leave the comment setting tab set to open so a future release will not be blocked from adding students answers as a feature.&nbsp;</li>
+		<li>The revision setting needs to always be left at revision otherwise you lose the ability to track changes.&nbsp; Then click save.</li>
+	</ol>
+	</li>
+</ol>
+
+<p>In the tools menu on the middle of the left side of&nbsp;the screen their will be an "Add content" menu item, Click it. Once there, you will need to select "Question" from the list of links&nbsp;to add a question. Type the below answer into each field.</p>
+
+<p>&nbsp;</p>
+
+<ol>
+	<li>Title: "image-part-b=propeller-nut=10pts"</li>
+	<li>Question: "Name the part labeled B in the image."</li>
+	<li>Total Point Value: 10&nbsp;</li>
+	<li>Reff:&nbsp;"&lt;a href="http://www.manual.com/b1/c1/p12"&gt;Book 1, Chapter 1, Paragraph 12&lt;/a&gt;"</li>
+	<li>Answer: "Propeller Nut"</li>
+	<li>Spacing between questions: 10&nbsp;</li>
+	<li>Associated Exams: "Propulsion systems"</li>
+	<li>"Add another item" then add&nbsp;Associated Exams: &nbsp;"Engineering"</li>
+	<li>Lastly at the bottom of the page there are two settings tabs on edit, and several tabs on the right side if you are creating a new question.&nbsp; One for comments and one for revisions.&nbsp;
+	<ol>
+		<li>Leave the comment setting tab set to open so a future release will not be blocked from adding students answers as a feature.&nbsp;</li>
+		<li>The revision setting needs to always be left at revision otherwise you lose the ability to track changes.&nbsp; Then click save.</li>
+	</ol>
+	</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p>In the tools menu on the middle of the left side of&nbsp;the screen their will be an "Add content" menu item, Click it. Once there, you will need to select "Question" from the list of links&nbsp;to add a question. Type the below answer into each field.</p>
+
+<ol>
+	<li>Title: "image-part-c=propeller-shaft=10pts"</li>
+	<li>Question: "Name the part labeled C in the image."</li>
+	<li>Total Point Value: 10&nbsp;</li>
+	<li>Reff:&nbsp;"&lt;a href="http://www.manual.com/b1/c1/p16"&gt;Book 1, Chapter 1, Paragraph 16&lt;/a&gt;"</li>
+	<li>Answer: "Propeller Shaft"&nbsp;</li>
+	<li>"Add another item" then add Answer : "Shaft ( 7pts)"</li>
+	<li>Spacing between questions: 10&nbsp;</li>
+	<li>Associated Exams: "Propulsion systems"</li>
+	<li>"Add another item" then add&nbsp;Associated Exams: &nbsp;"Engineering"</li>
+	<li>Lastly at the bottom of the page there are two settings tabs on edit, and several tabs on the right side if you are creating a new question.&nbsp; One for comments and one for revisions.&nbsp;
+	<ol>
+		<li>Leave the comment setting tab set to open so a future release will not be blocked from adding students answers as a feature.&nbsp;</li>
+		<li>The revision setting needs to always be left at revision otherwise you lose the ability to track changes.&nbsp; Then click save.</li>
+	</ol>
+	</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p>In the tools menu on the middle of the left side of&nbsp;the screen their will be an "Add content" menu item, Click it. Once there, you will need to select "Question" from the list of links&nbsp;to add a question. Type the below answer into each field.</p>
+
+<ol>
+	<li>Title: "describe-tool-screwdriver-tip=blade=10pts"</li>
+	<li>Question: "What is the tip of a screw driver called."</li>
+	<li>Total Point Value: 10&nbsp;</li>
+	<li>Reff:&nbsp;"&lt;a href="http://www.manual.com/b3/c1/p16"&gt;Book 3, Chapter 1, Paragraph 16&lt;/a&gt;"</li>
+	<li>Answer: "Blade"</li>
+	<li>Spacing between questions: 10&nbsp;</li>
+	<li>Associated Exams: "Tools"</li>
+	<li>Lastly at the bottom of the page there are two settings tabs on edit, and several tabs on the right side if you are creating a new question.&nbsp; One for comments and one for revisions.&nbsp;
+	<ol>
+		<li>Leave the comment setting tab set to open so a future release will not be blocked from adding students answers as a feature.&nbsp;</li>
+		<li>The revision setting needs to always be left at revision otherwise you lose the ability to track changes.&nbsp; Then click save.</li>
+	</ol>
+	</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p>In the tools menu on the middle of the left side of&nbsp;the screen their will be an "Add content" menu item, Click it. Once there, you will need to select "Question" from the list of links&nbsp;to add a question. Type the below answer into each field.</p>
+
+<ol>
+	<li>Title: "describe-tool-screwdriver-hold=handle=10pts"</li>
+	<li>Question: "What is the part&nbsp;of a screw driver called that you hold."</li>
+	<li>Total Point Value: 10&nbsp;</li>
+	<li>Reff:&nbsp;"&lt;a href="http://www.manual.com/b3/c1/p18"&gt;Book 3, Chapter 1, Paragraph 18&lt;/a&gt;"</li>
+	<li>Answer: "Handle"</li>
+	<li>Spacing between questions: 10&nbsp;</li>
+	<li>Associated Exams: "Tool"</li>
+	<li>Lastly at the bottom of the page there are two settings tabs on edit, and several tabs on the right side if you are creating a new question.&nbsp; One for comments and one for revisions.&nbsp;
+	<ol>
+		<li>Leave the comment setting tab set to open so a future release will not be blocked from adding students answers as a feature.&nbsp;</li>
+		<li>The revision setting needs to always be left at revision otherwise you lose the ability to track changes.&nbsp; Then click save.</li>
+	</ol>
+	</li>
+</ol>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_question_nid];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/2/1', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Question Approval',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Questions are approved by someone that has the role of Publisher or Approver attached to their account. Once verification has take place, the questions is published and active ready to be selected from a scenario.</p>
+',
+    'format' => 'basic_html'
+  ]);
+  
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_top_level_nid,
+                  'weight' => 30];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/3', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Exams',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Exams are wrapped packages of information that represent an exam, its description&nbsp;and scenarios which are required to make a exam&nbsp;work.</p>
+
+<p>If edited, you will return&nbsp;</p>
+
+<p><strong>Description of details of a wrapped inside n exam:&nbsp;</strong></p>
+
+<p><strong>EXAM-</strong> a&nbsp;short title that identifies what this exam is for. The label for this field is "Exam" so while you can name something "Exam 39B", you can also get away with&nbsp;1011-12-2016-1 since the word Exam is already in the label.</p>
+
+<p><strong>Description-</strong> the text explaining the test or it name. For a test called 1011-12-2016-1 you could describe it like this "Department 1011 Cert 12 Test for the year 2016, 1st attempt version". If a person fails this test and has the option of retaking it, the next set of questions available&nbsp;might be 1011-12-2016-2, or you might pre-create&nbsp;test 1-6&nbsp;and randomly give them out to the students, allowing them to retake a different one in the set.</p>
+
+<p><strong>Scenario-</strong>&nbsp;a list of loosely encapsulated questions. See <a href="/how_to_use_tads/5">Scenario</a> for more information.</p>
+
+<p><strong>Exams Category- &nbsp;</strong>works with the "associated exams" in the question to give you an idea of which questions could but useful in making your test. These tags&nbsp;also allows you to assign an exam from a category to match the requirement for a cert. As an example you could know that a person needs Cert 1011-12, so you have tests 1011-12-2015-1,&nbsp;1011-12-2014-1, 1011-12-2014-1&nbsp;and 1011-12-2016-1, you could search for tests beginning with 1011-12, or you could just go to the page for Cert 1011-12 and see which tests are marked as&nbsp;qualified&nbsp;to test for cert 1011-12.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_top_level_nid,
+                  'weight' => 40];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/4', 'en');
+  
+  $manual_exam_nid = $node->get('nid')->value;
+  $manual_exam_pid = $node->book['pid'];
+  $array_of_nids_created[] = $manual_exam_nid;
+  
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Exam Examples',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Below are the step to create an example to hold the questions we have already created.</p>
+
+<p>&nbsp;</p>
+
+<p>After logging in on the top right corner of the website, in the tools menu on the middle of the left side of&nbsp;the screen their will be an "Add content" menu item, Click it. Once there, you will need to select "Exam" from the list of links&nbsp;to add a exam. Type the below answer into each field.</p>
+
+<ol>
+	<li>Title: "1011-12-2016-1"</li>
+	<li>Description: "Department 1011, Cert 12, Year 2016 Test 1"</li>
+	<li>Scenario:&nbsp;Leave this blank for the <a href="/how_to_use_tads/5/1">next</a> example page</li>
+	<li>Click "Add another item" then add&nbsp;Associated Exams: &nbsp;"Engineering"</li>
+	<li>Exam&nbsp;Category: "Propulsion systems"</li>
+	<li>Click "Add another item" then add&nbsp;Associated Exams: &nbsp;"Engineering"</li>
+	<li>Lastly at the bottom of the page there are two settings tabs on edit, and several tabs on the right side if you are creating a new question.&nbsp; One for comments and one for revisions.&nbsp;
+	<ol>
+		<li>Leave the comment setting tab set to open so a future release will not be blocked from adding students answers as a feature.&nbsp;</li>
+		<li>The revision setting needs to always be left at revision otherwise you lose the ability to track changes.&nbsp; Then click save.</li>
+	</ol>
+	</li>
+</ol>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_exam_nid];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/4/1', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Scenario',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Once you have saved your exam, click the edit button again, to start creating a scenario.</p>
+
+<p>Under the Scenario section near the bottom, there will be a "Add scenario" button, click it and start to edit the fields. If you have an image that the question all refer to, add it here, then add common instructions&nbsp;and contextual information. Most scenarios will not require all 3 fields to be complete and can be marked as N/A. Context might include the dimensions of the objects labeled in the image or surrounding environment that could not be seen in the image.</p>
+
+<p>&nbsp;</p>
+
+<p>Lastly, add the questions to the list but clicking the "Add another item" button in the question section, and type in a word in the questions title that you want to add. Repeat till your scenario is full and save.</p>
+
+<p>If you want to add another scenario, click the "Add Scenario" button and repeat the process.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_top_level_nid,
+                  'weight' => 50];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/5', 'en');
+  
+  $manual_scenario_nid = $node->get('nid')->value;
+  $manual_scenario_pid = $node->book['pid'];
+  $array_of_nids_created[] = $manual_scenario_nid;
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Scenario Example 1',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Example with Image.</p>
+
+<p>Once the "Add Scenario" button clicked, add the following text and files.</p>
+
+<p>Image: &nbsp;add a picture of a propulsion unit for a boat with labeled parts.</p>
+
+<p>Context: "This is a propulsion system.</p>
+
+<p>Instructions: Name the parts labeled in the propulsion system on this image.</p>
+
+<p>Click the "Add another item" button.</p>
+
+<p>Start typing the name of the questions "part-a".</p>
+
+<p>Repeat the last 2 steps &nbsp;for&nbsp;"part-b" and "part-c".</p>
+
+<p>Hit save.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_scenario_nid,
+                  'weight' => 10];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/5/1', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Scenario Example 2',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Example without Image.</p>
+
+<p>Once the "Add Scenario" button is clicked, add the following text.</p>
+
+<p>Context: "Tool description.</p>
+
+<p>Instructions: Name the parts requested below.</p>
+
+<p>Click the "Add another item" button.</p>
+
+<p>Start typing the name of the questions "part-blade".</p>
+
+<p>Repeat the last 2 steps &nbsp;for&nbsp;"part-handle" and "blade-types".</p>
+
+<p>Hit save.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_scenario_nid,
+                  'weight' => 20];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/5/2', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Exam Approval',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Scenarios are loosely&nbsp;connected question and transient, so they do not need approval, but exams and questions do.</p>
+
+<p>An exam once finished can be frozen in place by approving the version that is currently selected. &nbsp;Once done, it can be selected for use and given to a student.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_top_level_nid,
+                  'weight' => 60];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/6', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Reversioning Exams',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>Every change to and exam or its scenarios, creates a new revision, but changes to the questions contained does not. If you make changes to a question, it leaves the exam connected to the old question, and creates a new revision from the edit which is currently&nbsp;not being used by any exam. If you make changed to scenarios including which question are used inside of is, it DOES create a new revision of the exam.&nbsp;</p>
+
+<p>Once an exam is published, any new copies will need to be unapproved, so that they are not available for use. This is something that will need to be added in later so that it is automatic. We do not recommend&nbsp;you edit exams while it is in still being given out, because without a link to get to it, you will always get the most recent one when you search for it, or go to it from a listing. This is not true with questions as the link is built into the exam and frozen in that state. We will be creating a listing of exams that need to be taken for a student in a later feature release that will accommodate for this and link directly to chosen version of an exam.</p>
+
+<p>It should be pointed out that the system was designed to make the exam as immutable as possible, so that once approved, they were never edited, they could be replaced, but should not be edited.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_top_level_nid,
+                  'weight' => 70];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/7', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  
+  
+  //Save this now, so crashs still can be mostly removed on uninstall
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+  
+  $node = Node::create([
+    'type' => 'book',
+    'uid' => 1,
+    'revision' => 1,
+    'status' => TRUE,
+    'promote' => 0,
+    'created' => time(),
+    'langcode' => 'en',
+    'title' => 'Reversioning Questions',
+  ]);
+  
+  
+  $node->set('body', [
+    'value' => '<p>When a question is edited, it makes the changes to a new version of the question, leaving all the exams that point at this question, still attached to the versions that they were before. If you want to update an exam to include this new questions, you will need to make sure ALL the questions the exam point to are reverted&nbsp;back to the correct version you want before setting the exam. If there were edits going on at this point, remember to revert them back to the last save, so that those edits can continue.</p>',
+    'format' => 'basic_html'
+  ]);
+  
+  $node->book =  ['bid' => $manual_top_level_nid,
+                  'pid' => $manual_top_level_nid,
+                  'weight' => 80];
+  $node->save();
+ 
+  $source = '/node/' . $node->get('nid')->value;
+  \Drupal::service('path.alias_storage')->save($source, '/manual/8', 'en');
+  
+  $array_of_nids_created[] = $node->get('nid')->value;
+  
+  
+  //\Drupal::config('tads_minimum_documentation.settings')
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $array_of_nids_created)
+      ->save();
+  
+  
+/*  $link = MenuLinkContent::create([
+    'title'      => 'Manual',
+    'link'       => ['uri' => 'internal:/manual'],
+    'menu_name'  => 'main',
+    'weight'     => 99,
+  ]);
+  $link->save();*/
+}
+
+
+function tads_minimum_documentation_uninstall()
+{
+  $array_of_nids_created = \Drupal::config('tads_minimum_documentation.settings')->get('installed_manual_nids');
+  
+  if (!empty($array_of_nids_created))
+  {
+    entity_delete_multiple('node', $array_of_nids_created);
+  }
+  $empty_array = [];
+  \Drupal::configFactory()->getEditable('tads_minimum_documentation.settings')
+      ->set('installed_manual_nids', $empty_array)
+      ->save();
+  
+}

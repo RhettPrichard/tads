@@ -1,0 +1,24 @@
+tads_exam.example:
+  title: 'Test Exam'
+  description: 'Test Exam link for 04-19-2016-01'
+  parent: system.admin_config_development
+  route_name: tads_exam.studentprintout.example
+  weight: 100
+tads_minimum_documentation.quickstart:
+  title: 'Quick Start'
+  description: 'How to use (Quick Start).'
+  url: 'internal:/quickstart'
+  weight: 70
+  menu_name: main
+tads_minimum_documentation.quickcreate:
+  title: 'Quick Create'
+  description: 'How to use (Quick Create).'
+  url: 'internal:/quickcreate'
+  weight: 71
+  menu_name: main
+tads_minimum_documentation.manual:
+  title: 'Manual'
+  description: 'Manual for all minimum documentation.'
+  url: 'internal:/manual'
+  weight: 90
+  menu_name: main

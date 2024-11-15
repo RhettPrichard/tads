@@ -1,0 +1,6 @@
+tads_examples.exam_39b:
+  title: 'Exam 39B'
+  description: '.'
+  url: 'internal:/exam/39b'
+  weight: 50
+  menu_name: main

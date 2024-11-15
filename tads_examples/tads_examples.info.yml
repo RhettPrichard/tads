@@ -1,0 +1,16 @@
+name: TADs Examples
+description: Creates questions and answers combos for TADs Exams.
+package: TADs
+
+type: module
+core: 8.x
+core_version_requirement: ^10 || ^11
+
+
+dependencies:
+  - tads_exam
+
+test_dependencies:
+ - drupal:dblog
+
+hidden: false
