@@ -5,11 +5,11 @@ dependencies:
     module:
       - tads_scenario
   config:
-    - field.storage.paragraph.field_scenario_figure
+    - field.storage.paragraph.field_tads_scenario_figure
     - paragraphs.paragraphs_type.tads_scenario
   module:
     - image
-id: paragraph.tads_scenario.field_scenario_figure
+id: paragraph.tads_scenario.field_tads_scenario_figure
 field_name: field_scenario_figure
 entity_type: paragraph
 bundle: tads_scenario

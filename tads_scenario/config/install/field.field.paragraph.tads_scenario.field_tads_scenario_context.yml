@@ -5,12 +5,12 @@ dependencies:
     module:
       - tads_scenario
   config:
-    - field.storage.paragraph.field_scenario_context
+    - field.storage.paragraph.field_tads_scenario_context
     - paragraphs.paragraphs_type.tads_scenario
   module:
     - text
-id: paragraph.tads_scenario.field_scenario_context
-field_name: field_scenario_context
+id: paragraph.tads_scenario.field_tads_scenario_context
+field_name: field_tads_scenario_context
 entity_type: paragraph
 bundle: tads_scenario
 label: 'Scenario Context'
