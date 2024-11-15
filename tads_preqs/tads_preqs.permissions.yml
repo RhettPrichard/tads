@@ -3,7 +3,7 @@
 #comment: Question
 generate tads question:
   title: 'Generate TADS Questions'
-create tads question content:
+create tads question:
   title: 'Create TADS Questions'
 #comment: Question-View
 view tads question content:
@@ -40,14 +40,14 @@ revert paragraph content tads scenario revisions:
 delete paragraph content tads scenario:
   title: 'Delete TADS Scenario Paragraph'
 #comment: Exam
-create tads exam content:
+create tads exam:
   title: 'Create TADS Exams'
 #comment: Exam-View
 view tads exam revisions:
   title: 'View TADS Exams'
 view own tads exam revisions:
   title: 'View Owned TADS Exams'
-print tads exam:
+print tads exam content:
   title: 'Print TADS Exams'
 #comment: Exam-Edit
 edit tads exam content:
@@ -70,7 +70,7 @@ delete tads exam revisions:
 delete own tads exam revisions:
   title: 'Delete Owned TADS Exam Revisions'
 #comment: Exam-Score
-score tads exam:
+score tads exam content:
   title: 'Score TADS Exams'
 use text format basic_no_editor:
   title: 'Score TADS Exams'
