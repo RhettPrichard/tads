@@ -27,7 +27,7 @@ function tads_question_install()
   
   
   /*$link = MenuLinkContent::create([
-    'title'      => 'List Exams Tags',
+    'title'      => 'List TADS Exams Tags',
     'link'       => ['uri' => 'internal:/admin/structure/taxonomy/manage/exams_types/overview'],
     'menu_name'  => 'tools',
     'weight'     => 20,

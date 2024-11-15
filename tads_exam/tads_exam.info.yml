@@ -1,6 +1,6 @@
-name: Exam
-description: Creates Exams for TADs
-package: TADs
+name: TADS Exam
+description: Creates Exams for TADS
+package: TADS
 
 type: module
 core: 8.x

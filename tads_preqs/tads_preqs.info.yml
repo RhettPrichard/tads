@@ -1,6 +1,6 @@
-name: Preqs
-description: Creates Preqs for TADs
-package: TADs
+name: TADS Preqs
+description: Creates Preqs for TADS
+package: TADS
 
 type: module
 core: 8.x

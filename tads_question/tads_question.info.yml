@@ -1,6 +1,6 @@
-name: Question
-description: Creates questions and answers combos for TADs
-package: TADs
+name: TADS Question
+description: Creates questions and answers combos for TADS
+package: TADS
 
 type: module
 core: 8.x

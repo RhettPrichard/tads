@@ -5,7 +5,7 @@ dependencies:
     module:
       - tads_preqs
 id: exam_publisher
-label: 'Exam Publisher'
+label: 'TADS Exam Publisher'
 weight: -5
 is_admin: null
 permissions:

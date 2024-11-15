@@ -4,7 +4,7 @@ dependencies:
   enforced:
     module:
       - tads_preqs
-name: 'Exam Types'
+name: 'TADS Exam Types'
 vid: exam_types
 description: 'All tests that qualify a person to work on power plants, would be tagged with "Power Plants"'
 hierarchy: 0

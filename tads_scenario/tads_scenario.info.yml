@@ -1,6 +1,6 @@
-name: Scenario
-description: Creates Scenarios for questions to be attached to for TADs
-package: TADs
+name: TADS Scenario
+description: Creates Scenarios for questions to be attached to for TADS
+package: TADS
 
 type: module
 core: 8.x

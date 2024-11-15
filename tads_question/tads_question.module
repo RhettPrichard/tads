@@ -3,7 +3,7 @@
 /**
   *
   * @file
-  * TADs Question Module.
+  * TADS Question Module.
   */
 
 use Drupal\Core\Routing\RouteMatchInterface;
