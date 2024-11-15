@@ -14,7 +14,7 @@ dependencies:
     - field.field.node.tads_question.body
     - field.field.node.tads_question.field_answer
     - field.field.node.tads_question.field_answer_given
-    - field.field.node.tads_question.field_associated_exams
+    - field.field.node.tads_question.field_associated_tads_exams
     - field.field.node.tads_question.field_reference
     - field.field.node.tads_question.field_spacing_between_questions
     - field.field.node.tads_question.field_total_point_value
