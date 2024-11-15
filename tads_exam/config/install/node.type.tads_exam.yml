@@ -10,9 +10,9 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
-name: Exam
+name: TADS Exam
 type: tads_exam
-description: 'An Exam, once approved by a supervisor, it is ready for use.'
+description: 'An TADS Exam, once approved by a supervisor, it is ready for use.'
 help: ''
 new_revision: true
 preview_mode: 0
