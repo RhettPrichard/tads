@@ -8,8 +8,8 @@ core_version_requirement: ^10 || ^11
 
 
 dependencies:
-  - tads_exam
-  - book
+  - rhettprichard:tads_exam
+  - drupal:book
 
 test_dependencies:
  - drupal:dblog

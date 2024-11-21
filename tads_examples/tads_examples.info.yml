@@ -8,7 +8,7 @@ core_version_requirement: ^10 || ^11
 
 
 dependencies:
-  - tads_exam
+  - rhettprichard:tads_exam
 
 test_dependencies:
  - drupal:dblog
