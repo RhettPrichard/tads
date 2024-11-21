@@ -29,4 +29,5 @@ settings:
       tads_scenario:
         enabled: true
         weight: 2
-field_type: entity_reference_revisions
+_comment_was_field_type: entity_reference_revisions
+field_type: paragraphs
