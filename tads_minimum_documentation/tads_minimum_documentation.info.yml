@@ -1,6 +1,6 @@
 name: TADs Minimum Documentaion
 description: Creates Minimum Documentaion for TADs.
-package: TADs
+package: TADS
 
 type: module
 core: 8.x
