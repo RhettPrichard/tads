@@ -1,0 +1,51 @@
+{
+    "description": "Testing Analytical Database System.",
+    "keywords": ["drupal","tads"],
+    "homepage": "https://tads.visualization-node.info/",
+    "license": "GPL-2.0-or-later",
+    "type": "drupal-module",
+    "authors": [
+      {
+        "name": "Rhett Prichard (rap)",
+        "homepage": "https://www.rhettprichard.com",
+        "role": "Maintainer"
+      }
+    ],
+    "support": {
+      "_issues": "https://drupal.org/project/issues/mobile_detect",
+      "_irc": "irc://irc.freenode.org/drupal-contribute",
+      "source": "https://github.com/RhettPrichard/tads.git",
+      "wiki":  "https://github.com/RhettPrichard/tads"
+    },
+    "minimum-stability": "dev",
+    "repositories": [
+      {
+        "type": "package",
+        "package": [
+          {
+            "name": "tads/tads_scenario",
+            "version": "1.0.0",
+            "source": {
+              "url": "https://github.com/RhettPrichard/tads/",
+              "type": "vcs",
+              "reference": "tags/Smarty_3_1_7/distribution/" 
+            }
+          },
+          {
+            "name": "tads/tads_exam",
+            "version": "1.0.0",
+            "source": {
+              "url": "https://github.com/RhettPrichard/tads/",
+              "type": "vcs",
+              "reference": "tags/Smarty_3_1_7/distribution/"      
+            }
+          }
+        ]
+      }
+    ],
+    "require": {
+    },
+    "require-dev": {
+    }
+  }
+  
